@@ -33,8 +33,12 @@ jobs:
           rm -f MANIFEST.sha256 DELIVERY.md RELEASE-CHECKLIST.md scripts/hh.py
 
           cp -a /tmp/ofo-refactor/. .
+
+          # The Actions token can write repository content but cannot modify workflow files.
+          # Keep workflow files exactly as they were in this branch; update CI separately via the GitHub connector.
+          git checkout HEAD -- .github/workflows/ci.yml .github/workflows/apply-refactor.yml
+
           rm -rf .bootstrap
-          rm -f .github/workflows/apply-refactor.yml
 
           python scripts/package_web.py
           python scripts/ofo.py demo >/tmp/ofo-demo.txt
