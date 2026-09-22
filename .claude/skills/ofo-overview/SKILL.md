@@ -1,27 +1,11 @@
 ---
 name: ofo-overview
-description: Explain the household financial position: balance sheet, income durability and liquidity runway.
+description: Explain the household balance sheet, income durability, liquidity and near-term obligations.
 license: MIT
-compatibility: File-aware agent. Python 3.11+ for deterministic calculations; optional integrations require separate setup.
 ---
 
-# ofo-overview
+# ofo-overview — Claude entrypoint
 
-## Use this when
-Explain the household financial position: balance sheet, income durability and liquidity runway.
+The canonical user-facing skill is [`.agents/skills/ofo-overview/SKILL.md`](../../../.agents/skills/ofo-overview/SKILL.md).
 
-## Outcome
-Validate first, run deterministic calculations, then summarize net worth, spendable liquidity, recurring income, obligations and material concentration gaps.
-
-## Canonical workflow
-- [`agent/workflows/snapshot.md`](../../../agent/workflows/snapshot.md)
-- [`agent/workflows/income.md`](../../../agent/workflows/income.md)
-- [`agent/workflows/liquidity.md`](../../../agent/workflows/liquidity.md)
-
-## Operating rules
-1. Read [`AGENTS.md`](../../../AGENTS.md) before using private data.
-2. Work only with files the user explicitly authorizes. Private workspaces live outside this repository.
-3. Run documented `ofo` / `python scripts/ofo.py` calculations before stating numerical results.
-4. Keep confirmed facts, imported evidence, assumptions and model outputs separate.
-5. Do not execute trades, move money, invent missing facts, or present research output as a guaranteed/suitable product recommendation.
-6. End with: what changed, what was calculated, what remains unknown, and the next user-controlled choice.
+Read that file and [`AGENTS.md`](../../../AGENTS.md), then follow them exactly. This wrapper intentionally contains no duplicated financial workflow logic.
