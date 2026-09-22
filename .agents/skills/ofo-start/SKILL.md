@@ -1,27 +1,29 @@
 ---
 name: ofo-start
-description: Set up a new private family-office workspace and guide first-time onboarding.
+description: Create or complete a private family-office workspace and produce the first verified household view.
 license: MIT
-compatibility: File-aware agent. Python 3.11+ for deterministic calculations; optional integrations require separate setup.
+compatibility: Any file-aware agent with access to the installed ofo CLI or a source checkout.
 ---
 
 # ofo-start
 
-## Use this when
-Set up a new private family-office workspace and guide first-time onboarding.
+Use this for a new household or an incomplete workspace.
 
-## Outcome
-Create a private workspace outside the repository, gather only user-authorized facts, validate them, and produce the first snapshot.
+## Run
+1. Read AGENTS.md.
+2. Run `ofo status`. If there is no workspace, create one with `ofo init <user-approved-path>`.
+3. Follow setup.md to gather only the minimum facts needed for the first useful model.
+4. Preserve supplied files under the private workspace; do not rewrite evidence.
+5. Validate with `ofo validate`.
+6. When valid, run `ofo overview --format markdown`.
 
-## Canonical workflow
-- [`agent/workflows/setup.md`](../../../agent/workflows/setup.md)
-- [`agent/workflows/import.md`](../../../agent/workflows/import.md)
-- [`agent/workflows/snapshot.md`](../../../agent/workflows/snapshot.md)
+## Interview order
+Household/base currency → assets/debt → recurring income/outgoings → dated obligations → restrictions/liquidity → goals. Leave unknowns explicit.
 
-## Operating rules
-1. Read [`AGENTS.md`](../../../AGENTS.md) before using private data.
-2. Work only with files the user explicitly authorizes. Private workspaces live outside this repository.
-3. Run documented `ofo` / `python scripts/ofo.py` calculations before stating numerical results.
-4. Keep confirmed facts, imported evidence, assumptions and model outputs separate.
-5. Do not execute trades, move money, invent missing facts, or present research output as a guaranteed/suitable product recommendation.
-6. End with: what changed, what was calculated, what remains unknown, and the next user-controlled choice.
+## Finish with
+Summarize what is confirmed, what is still unknown, and offer at most two next skills: usually **ofo-overview** or **ofo-plan**.
+
+Canonical workflows:
+- [agent/workflows/setup.md](../../../agent/workflows/setup.md)
+- [agent/workflows/import.md](../../../agent/workflows/import.md)
+- [agent/workflows/snapshot.md](../../../agent/workflows/snapshot.md)
