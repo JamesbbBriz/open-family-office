@@ -24,16 +24,16 @@ jobs:
         run: |
           set -euo pipefail
           shopt -s nullglob
-          parts=(.bootstrap/part*.b64)
-          if [ "${#parts[@]}" -ne 30 ]; then
-            echo "Waiting for all 30 source chunks; currently have ${#parts[@]}."
+          parts=(.bootstrap-min/part*.b64)
+          if [ "${#parts[@]}" -ne 13 ]; then
+            echo "Waiting for all 13 source chunks; currently have ${#parts[@]}."
             exit 0
           fi
           cat "${parts[@]}" > /tmp/open-family-office.b64
           base64 -d /tmp/open-family-office.b64 > /tmp/open-family-office.tar.gz
-          echo "3892df44b4096b1cd892fc5fc3eb957bac80a27d6c1b854d35ad6b62f852524f  /tmp/open-family-office.tar.gz" | sha256sum -c -
+          echo "bbc5d935f01166b19df0c188f7f8cee1a29c74f42a8c2e1f23a8054a5293c866  /tmp/open-family-office.tar.gz" | sha256sum -c -
           tar -xzf /tmp/open-family-office.tar.gz -C .
-          rm -rf .bootstrap
+          rm -rf .bootstrap .bootstrap-min
           rm -f .github/workflows/bootstrap-source.yml
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
