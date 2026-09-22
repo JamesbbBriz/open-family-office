@@ -1,79 +1,161 @@
 # Quick start
 
-## 1. Try synthetic data first
+Open Family Office is designed for three different entry levels: **try it**, **install the CLI**, or **clone it to contribute**.
+
+## 1. Try it without installing
+
+With [uv](https://docs.astral.sh/uv/) installed:
 
 ```bash
-python scripts/ofo.py demo
+uvx --from git+https://github.com/JamesbbBriz/open-family-office.git ofo demo
 ```
 
-No installation, network or model account is required for this demo.
-
-## 2. Install the local tools
-
-Python 3.12 is the recommended development version.
+To open the bundled interactive dashboard as well:
 
 ```bash
-python -m venv .venv
-# macOS/Linux
-. .venv/bin/activate
-# Windows: .venv\Scripts\activate
-python -m pip install -e '.[analytics,documents]'
+uvx --from git+https://github.com/JamesbbBriz/open-family-office.git ofo demo --open
+```
+
+The demo is synthetic. It does not ask for a model account, API key or household data.
+
+## 2. Install the CLI globally
+
+```bash
+uv tool install git+https://github.com/JamesbbBriz/open-family-office.git
+ofo --version
 ofo doctor
 ```
 
-For all optional engines and integrations:
+If uv warns that its executable directory is not on `PATH`, run `uv tool update-shell` and restart the shell.
+
+A pipx fallback is also possible:
 
 ```bash
-python scripts/bootstrap.py --all
+pipx install git+https://github.com/JamesbbBriz/open-family-office.git
 ```
 
-## 3. Agent-first onboarding
+## 3. Create your private workspace
 
-For Claude Code, open the repository and run:
+Choose a directory outside the public source repository:
+
+```bash
+ofo init ~/FamilyOffice
+cd ~/FamilyOffice
+ofo status
+```
+
+`ofo init` creates:
 
 ```text
-/ofo-start
+FamilyOffice/
+├── household.json
+├── PRIVATE.md
+├── README.md
+├── evidence/
+├── imports/
+├── scenarios/
+├── reports/
+├── .ofo/
+│   ├── workspace.json
+│   └── agent-kit.json
+├── .agents/skills/
+├── .claude/skills/
+├── .claude/commands/
+└── agent/
+    ├── workflows/
+    ├── methodology/
+    ├── schemas/
+    └── templates/
 ```
 
-For other file-aware agents, ask it to use `.agents/skills/ofo-start/SKILL.md`. The skill creates a private workspace **outside the repository**, gathers only authorized facts and runs deterministic validation before producing the first overview.
+The agent kit is installed automatically. Open **this private workspace** in your file-aware agent and use **ofo-start**.
 
-Recommended next steps:
+## 4. The normal CLI path
 
-```text
-ofo-overview → ofo-plan → ofo-scenario → ofo-dashboard
-```
-
-Use `ofo-update` when new statements or valuations arrive; use `ofo-research` only when external evidence or liquid-sleeve research is actually needed.
-
-## 4. CLI examples
+Once `household.json` is complete:
 
 ```bash
-ofo validate ~/ofo-private/household.json
-ofo overview ~/ofo-private/household.json
-ofo cashflow ~/ofo-private/household.json --months 24 --format markdown
-ofo stress ~/ofo-private/household.json ~/ofo-private/scenario.json --months 24
-ofo compare-allocation ~/ofo-private/household.json ~/ofo-private/policy.json
+ofo validate
+ofo overview --format markdown
+ofo scenario scenarios/job-loss.json
+ofo allocation policy.json
+ofo dashboard --out reports/review.html --open
 ```
 
-Research tools:
+Because the CLI discovers the nearest `.ofo/workspace.json`, you do not need to repeat the household path while working inside the workspace.
+
+Legacy expert commands such as `stress` and `compare-allocation` remain available, but they are not the first-run UX.
+
+## 5. Keep Skills current without losing your edits
+
+After upgrading Open Family Office:
 
 ```bash
-ofo optimize examples/returns.synthetic.json --engine scipy --method min_variance
-ofo simulate examples/simulation.synthetic.json
-ofo lookthrough examples/ownership.synthetic.json
+uv tool upgrade open-family-office
+cd ~/FamilyOffice
+ofo agent sync
+ofo agent status
 ```
 
-Provider retrieval is explicit and opt-in:
+Managed files that are still unchanged are updated. A Skill or workflow you edited yourself is reported as a **conflict and left untouched**.
+
+## 6. Optional MCP
+
+MCP is useful when your agent host prefers standard tool calls, but it is not required for normal Skill or CLI use.
+
+Install the MCP dependency into the tool environment:
 
 ```bash
+uv tool install --force --with 'mcp>=1.10,<2' git+https://github.com/JamesbbBriz/open-family-office.git
+```
+
+Then, inside the private workspace:
+
+```bash
+ofo mcp-config
+```
+
+The generated stdio configuration scopes the server to that workspace. The MCP tools are read-only.
+
+## 7. Advanced research extras
+
+The base CLI intentionally keeps advanced engines optional. A one-shot power-user install can layer additional packages into the uv tool environment:
+
+```bash
+uv tool install --force \
+  --with 'numpy>=2.1,<3' \
+  --with 'pandas>=2.2,<3' \
+  --with 'scipy>=1.14,<2' \
+  --with 'scikit-learn>=1.5,<2' \
+  --with 'pypdf>=5.9,<7' \
+  --with 'ofxparse==0.21' \
+  --with 'mcp>=1.10,<2' \
+  --with 'yfinance>=0.2.60,<1' \
+  --with 'skfolio>=0.9,<1' \
+  --with 'PyPortfolioOpt>=1.5.6,<2' \
+  git+https://github.com/JamesbbBriz/open-family-office.git
+```
+
+Check what is actually available:
+
+```bash
+ofo doctor
 ofo providers
-ofo fetch rba table --query '{"table":"f01"}' --allow-network --out ~/ofo-private/rba-f01.json
 ```
 
-## 5. Export a private dashboard
+Provider code is not a claim of live entitlement or successful authentication.
+
+## 8. Developer checkout
+
+If you want to extend Skills, workflows, providers or quantitative engines:
 
 ```bash
-ofo dashboard ~/ofo-private/household.json --out ~/ofo-private/dashboard-001.html
+git clone https://github.com/JamesbbBriz/open-family-office.git
+cd open-family-office
+python -m venv .venv
+. .venv/bin/activate
+python -m pip install -e '.[analytics,documents]'
+python -m unittest discover -s tests -v
 ```
 
-The HTML embeds private data. Do not place private exports under `public/` or commit them to GitHub.
+The source fallback remains `python scripts/ofo.py ...`, but installed users should use `ofo`.
