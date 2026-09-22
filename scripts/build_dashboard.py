@@ -13,7 +13,7 @@ from open_family_office import __version__
 def _canonicalize(value):
     """Normalize generated numeric JSON so builds are stable across BLAS/NumPy patch versions."""
     if isinstance(value, float):
-        return round(value, 6)
+        return round(value, 5)
     if isinstance(value, list):
         return [_canonicalize(v) for v in value]
     if isinstance(value, dict):
