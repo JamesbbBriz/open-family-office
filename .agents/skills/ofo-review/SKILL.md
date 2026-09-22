@@ -1,25 +1,22 @@
 ---
 name: ofo-review
-description: Review a past financial decision or scenario and record what changed.
+description: Compare a past household decision with new evidence and record what actually changed.
 license: MIT
-compatibility: File-aware agent. Python 3.11+ for deterministic calculations; optional integrations require separate setup.
+compatibility: Any file-aware agent with access to the private workspace.
 ---
 
 # ofo-review
 
-## Use this when
-Review a past financial decision or scenario and record what changed.
+Use this for a decision post-mortem or periodic family-office review.
 
-## Outcome
-Compare the original assumptions with actual outcomes and new evidence, then create a concise decision record without rewriting history.
+## Run
+1. Read AGENTS.md.
+2. Locate the original decision record, assumptions and contemporaneous evidence.
+3. Re-run current deterministic household calculations where relevant.
+4. Compare original assumptions with observed outcomes without rewriting the original record.
+5. Create a new dated review entry.
 
-## Canonical workflow
-- [`agent/workflows/review.md`](../../../agent/workflows/review.md)
+## Finish with
+Separate: what was right, what was wrong, what changed externally, what remains unknowable, and what user decision is now open. Offer **ofo-update** or **ofo-plan**.
 
-## Operating rules
-1. Read [`AGENTS.md`](../../../AGENTS.md) before using private data.
-2. Work only with files the user explicitly authorizes. Private workspaces live outside this repository.
-3. Run documented `ofo` / `python scripts/ofo.py` calculations before stating numerical results.
-4. Keep confirmed facts, imported evidence, assumptions and model outputs separate.
-5. Do not execute trades, move money, invent missing facts, or present research output as a guaranteed/suitable product recommendation.
-6. End with: what changed, what was calculated, what remains unknown, and the next user-controlled choice.
+Canonical workflow: [agent/workflows/review.md](../../../agent/workflows/review.md)

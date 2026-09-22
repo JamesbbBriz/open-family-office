@@ -1,2 +1,2 @@
-"""Open Family Office: deterministic, offline household-planning primitives."""
-__version__ = "0.4.0"
+"""Open Family Office: deterministic, local-first household wealth research primitives."""
+__version__ = "0.5.0"

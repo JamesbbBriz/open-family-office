@@ -1,27 +1,26 @@
 ---
 name: ofo-research
-description: Research external data, ownership look-through or liquid-sleeve portfolio methods with explicit assumptions.
+description: Research external evidence, ownership look-through or liquid-sleeve quantitative methods with explicit assumptions.
 license: MIT
-compatibility: File-aware agent. Python 3.11+ for deterministic calculations; optional integrations require separate setup.
+compatibility: Any file-aware agent; network/provider and optional quant packages may require additional setup.
 ---
 
 # ofo-research
 
-## Use this when
-Research external data, ownership look-through or liquid-sleeve portfolio methods with explicit assumptions.
+Use this only when the question needs evidence beyond the household model or needs advanced liquid-sleeve analysis.
 
-## Outcome
-Use evidence-preserving providers only with permission; keep illiquid household assets separate from liquid research inputs; never silently turn research weights into advice.
+## Run
+1. Read AGENTS.md.
+2. Run `ofo doctor` and `ofo providers` when provider readiness matters.
+3. External retrieval requires explicit user permission; save evidence envelopes rather than directly changing household facts.
+4. For ownership, use the explicit look-through workflow; do not infer legal structures.
+5. For optimization, require an explicit liquid research universe and assumptions, then run the relevant `ofo optimize` command.
+6. Label historical observations, user views and model outputs separately.
 
-## Canonical workflow
-- [`agent/workflows/source.md`](../../../agent/workflows/source.md)
-- [`agent/workflows/lookthrough.md`](../../../agent/workflows/lookthrough.md)
-- [`agent/workflows/optimize.md`](../../../agent/workflows/optimize.md)
+## Finish with
+Explain what the research adds to the household decision and what remains assumption-sensitive. Hand back to **ofo-plan** or **ofo-scenario**.
 
-## Operating rules
-1. Read [`AGENTS.md`](../../../AGENTS.md) before using private data.
-2. Work only with files the user explicitly authorizes. Private workspaces live outside this repository.
-3. Run documented `ofo` / `python scripts/ofo.py` calculations before stating numerical results.
-4. Keep confirmed facts, imported evidence, assumptions and model outputs separate.
-5. Do not execute trades, move money, invent missing facts, or present research output as a guaranteed/suitable product recommendation.
-6. End with: what changed, what was calculated, what remains unknown, and the next user-controlled choice.
+Canonical workflows:
+- [agent/workflows/source.md](../../../agent/workflows/source.md)
+- [agent/workflows/lookthrough.md](../../../agent/workflows/lookthrough.md)
+- [agent/workflows/optimize.md](../../../agent/workflows/optimize.md)

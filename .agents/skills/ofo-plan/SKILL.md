@@ -1,26 +1,24 @@
 ---
 name: ofo-plan
-description: Draft an investment policy and compare user-specified allocation targets without picking products.
+description: Draft a household investment policy and compare user-defined allocation targets without selecting products.
 license: MIT
-compatibility: File-aware agent. Python 3.11+ for deterministic calculations; optional integrations require separate setup.
+compatibility: Any file-aware agent with access to the installed ofo CLI or a source checkout.
 ---
 
 # ofo-plan
 
-## Use this when
-Draft an investment policy and compare user-specified allocation targets without picking products.
+Use this when the user wants a durable allocation framework rather than a one-off market opinion.
 
-## Outcome
-Turn goals, liquidity needs, horizon, constraints and risk capacity into a draft policy, then compare only explicit target allocations.
+## Run
+1. Read AGENTS.md and require a valid household overview first.
+2. Follow policy.md to separate goals, liquidity reserve, horizon, constraints, risk willingness and risk capacity.
+3. Draft policy inputs for user confirmation.
+4. Only after confirmation, run `ofo allocation <policy.json> --format markdown`.
+5. Keep product/ticker selection outside this skill.
 
-## Canonical workflow
-- [`agent/workflows/policy.md`](../../../agent/workflows/policy.md)
-- [`agent/workflows/allocate.md`](../../../agent/workflows/allocate.md)
+## Finish with
+Show reserve capital, investable capital and the consequences of the user-confirmed target mix. Offer **ofo-research** for deeper liquid-sleeve methods or **ofo-scenario** to stress the policy.
 
-## Operating rules
-1. Read [`AGENTS.md`](../../../AGENTS.md) before using private data.
-2. Work only with files the user explicitly authorizes. Private workspaces live outside this repository.
-3. Run documented `ofo` / `python scripts/ofo.py` calculations before stating numerical results.
-4. Keep confirmed facts, imported evidence, assumptions and model outputs separate.
-5. Do not execute trades, move money, invent missing facts, or present research output as a guaranteed/suitable product recommendation.
-6. End with: what changed, what was calculated, what remains unknown, and the next user-controlled choice.
+Canonical workflows:
+- [agent/workflows/policy.md](../../../agent/workflows/policy.md)
+- [agent/workflows/allocate.md](../../../agent/workflows/allocate.md)

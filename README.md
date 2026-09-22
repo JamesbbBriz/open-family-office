@@ -1,132 +1,211 @@
-<p align="center"><strong>OPEN FAMILY OFFICE</strong><br>Local-first family wealth research for AI agents.</p>
+<p align="center"><strong>OPEN FAMILY OFFICE</strong><br>Family-office methods, open to everyone willing to own the setup.</p>
 
 # Open Family Office
 
-**Your portfolio is not your whole financial life.** Open Family Office models the household around the portfolio: assets, debt, recurring and one-off income, liquidity needs, ownership, scenarios and a separately declared liquid investment sleeve.
+**Your portfolio is not your whole financial life.** Open Family Office is a local-first, open-source family wealth research toolkit for people and AI agents. It models the household around the portfolio: assets, debt, recurring and one-off income, liquidity, ownership, goals, scenarios and a separately declared liquid investment sleeve.
 
-[中文](README.zh-CN.md) · [Quick start](docs/QUICKSTART.md) · [Agent experience](docs/AGENT-UX.md) · [Data model](docs/DATA-MODEL.md) · [Integrations](docs/INTEGRATIONS.md) · [Roadmap](ROADMAP.md)
+It is **not a SaaS account, broker or autonomous adviser**. The project keeps advanced capability — ownership look-through, Monte Carlo, optimization, provider adapters and MCP — while exposing a small task-oriented Skill surface to normal users.
+
+[中文](README.zh-CN.md) · [Quick start](docs/QUICKSTART.md) · [Agent UX](docs/AGENT-UX.md) · [Data model](docs/DATA-MODEL.md) · [Integrations](docs/INTEGRATIONS.md) · [Roadmap](ROADMAP.md)
 
 ![Open Family Office](assets/readme/landing.png)
 
 ## Try it in 30 seconds
 
-No API key, model account or network call is needed for the synthetic demo.
+If you have [uv](https://docs.astral.sh/uv/):
 
 ```bash
-git clone https://github.com/JamesbbBriz/open-family-office.git
-cd open-family-office
-python scripts/ofo.py demo
+uvx --from git+https://github.com/JamesbbBriz/open-family-office.git ofo demo --open
 ```
 
-Or open `public/index.html` and `public/demo.html` directly. The bundled dashboard is static and self-contained.
+No API key, model account or network call is needed for the synthetic demo. No Git clone or private household data is required.
+
+## Install the CLI
+
+```bash
+uv tool install git+https://github.com/JamesbbBriz/open-family-office.git
+ofo --version
+ofo doctor
+```
+
+Create a private workspace:
+
+```bash
+ofo init ~/FamilyOffice
+cd ~/FamilyOffice
+ofo status
+```
+
+Then either open that folder in a file-aware AI agent and use **ofo-start**, or edit `household.json` yourself.
+
+```bash
+ofo validate
+ofo overview --format markdown
+ofo scenario scenarios/job-loss.json
+ofo dashboard --out reports/review.html --open
+```
+
+The CLI discovers the workspace automatically, so normal commands do not require repeating long JSON paths.
 
 ![Household research dashboard](assets/readme/overview.png)
 
-## The user experience
+## Skills are the user experience
 
-The project exposes a small set of **purposeful skills**, while keeping detailed financial procedures internal.
+The default agent surface is deliberately small:
+
+| Skill | What the user is trying to do |
+|---|---|
+| **ofo-demo** | See what the project can do without private data |
+| **ofo-start** | Build the first private household model |
+| **ofo-update** | Add new statements, valuations or life changes |
+| **ofo-overview** | Understand balance sheet, income durability and liquidity |
+| **ofo-plan** | Build an investment policy and allocation framework |
+| **ofo-scenario** | Test job loss, business sale, property shock, major purchase, etc. |
+| **ofo-research** | Use providers, look-through or quantitative research deliberately |
+| **ofo-dashboard** | Generate a private offline visual review |
+| **ofo-review** | Review an earlier decision against new evidence |
+| **ofo-doctor** | Diagnose installation, Skills, providers and MCP |
+
+Underneath those Skills, granular workflows remain available to contributors.
 
 ```text
-ofo-demo
-   ↓
-ofo-start → ofo-overview → ofo-plan
-                 ↓             ↓
-            ofo-scenario   ofo-research
-                 ↓             ↓
-              ofo-dashboard → ofo-review
-
-Existing household: ofo-update
-Setup problem:      ofo-doctor
+Skill
+  ↓
+canonical workflow
+  ↓
+deterministic ofo CLI / Python
+  ↓
+agent explanation
 ```
 
-For Claude Code the same entrypoints are available as `/ofo-demo`, `/ofo-start`, `/ofo-overview`, etc. Other file-aware agents can load `.agents/skills/ofo-*/SKILL.md`. Canonical domain logic lives under `agent/workflows/`; runtime files are thin entrypoints.
+**Skills are the UX. MCP is optional plumbing.** MCP exposes a read-only tool subset for compatible hosts, but the project works without it.
 
-## What it understands
+## Private workspace, not private-by-marketing
 
-- household balance sheet and attributable ownership
-- recurring fixed vs variable vs one-off cash flows
-- spendable liquidity versus locked/illiquid wealth
-- business-sale and other event bridges
-- future obligations and cash runway
-- household investment policy constraints
-- explicit ownership look-through and exposure dimensions
-- liquid-sleeve optimization and Monte Carlo research with explicit assumptions
-- evidence-preserving read-only provider adapters
-- offline private dashboards
+`ofo init` creates the household workspace outside the public source repository and installs a portable agent kit there:
 
-The research boundary is deliberate: a home, private company or locked pension is **not** silently converted into a tradable ticker.
+```text
+FamilyOffice/
+├── household.json
+├── evidence/
+├── imports/
+├── scenarios/
+├── reports/
+├── .ofo/
+├── .agents/skills/
+├── .claude/skills/
+├── .claude/commands/
+└── agent/
+    ├── workflows/
+    ├── methodology/
+    ├── schemas/
+    └── templates/
+```
 
-## CLI
-
-Install locally:
+After a CLI upgrade:
 
 ```bash
-python -m pip install -e '.[analytics,documents]'
-ofo doctor
-ofo demo
+ofo agent sync
 ```
 
-Common deterministic commands:
+Unmodified managed files are upgraded. A Skill you changed yourself is reported as a conflict and **left untouched**.
+
+Local-first is not the same thing as local inference or encryption. A cloud agent can still receive files you explicitly let it read. Private dashboards embed their data. See [SECURITY.md](SECURITY.md).
+
+## What the engine understands
+
+- attributable household assets and liabilities;
+- recurring fixed, recurring variable and one-off cash flows;
+- spendable liquidity versus locked or illiquid wealth;
+- dated obligations and cash runway;
+- business-sale and other event bridges;
+- explicit ownership look-through and exposure dimensions;
+- household investment-policy constraints;
+- liquid-sleeve Monte Carlo and optimization with explicit assumptions;
+- evidence-preserving, read-only provider adapters;
+- standalone offline Plotly dashboards.
+
+A home, private company or locked pension is **not** silently converted into a tradable ticker.
+
+## Deterministic CLI
+
+Common household commands:
 
 ```bash
-ofo validate /path/to/household.json
-ofo overview /path/to/household.json
-ofo stress /path/to/household.json /path/to/scenario.json
-ofo compare-allocation /path/to/household.json /path/to/policy.json
-ofo optimize examples/returns.synthetic.json --engine scipy --method min_variance
-ofo simulate examples/simulation.synthetic.json
+ofo validate
+ofo overview --format markdown
+ofo cashflow --months 36 --format markdown
+ofo scenario scenarios/business-sale.json
+ofo allocation policy.json
+ofo dashboard --out reports/review.html
 ```
 
-Optional setup for quant engines, documents, market adapters and MCP is documented in [Quick start](docs/QUICKSTART.md).
+Advanced research remains opt-in:
+
+```bash
+ofo providers
+ofo fetch rba table --query '{"table":"f01"}' --allow-network --out evidence/rba-f01.json
+ofo optimize returns.json --engine scipy --method min_variance
+ofo simulate simulation.json
+ofo lookthrough ownership.json
+```
+
+Historical observations, user views and model outputs are kept distinct. Optimizer weights are research output, not executable trading instructions.
+
+## Optional MCP
+
+Install MCP into the tool environment:
+
+```bash
+uv tool install --force --with 'mcp>=1.10,<2' git+https://github.com/JamesbbBriz/open-family-office.git
+```
+
+Then, inside a private workspace:
+
+```bash
+ofo mcp-config
+```
+
+The generated stdio server is confined to that workspace and exposes read-only tools.
 
 ## Architecture
 
 ```text
-src/open_family_office/   deterministic engine, integrations, quant, reports
+src/open_family_office/   installable deterministic engine + CLI
 agent/workflows/          canonical financial procedures
-agent/methodology/        domain rules and interpretation guidance
+agent/methodology/        interpretation rules
 agent/schemas/            structured household inputs
-agent/templates/          starter private-workspace templates
-.agents/skills/           portable user-facing skill entrypoints
-.claude/skills/           Claude project skills
-.claude/commands/         Claude slash-command entrypoints
-web/src/                  landing/dashboard source
-public/                   generated static website
+.agents/skills/           canonical portable user-facing Skills
+.claude/skills/           thin Claude discovery wrappers
+web/src/                  daisyUI / Tailwind / Plotly source
+public/                   generated static landing + synthetic demo
 examples/                 synthetic reproducible fixtures
-tests/                    accounting, integration, quant and web tests
+tests/                    accounting, integration, quant, CLI and web tests
 ```
 
-See [Agent experience](docs/AGENT-UX.md) for the skill design.
+Installed wheels bundle the demo, templates, agent kit and web resources. A user does **not** need the Git repository for normal CLI use.
 
-## Data and provider layer
+## For contributors
 
-Adapters exist for SEC EDGAR, FRED, RBA, ABS, OECD, IMF, CoinGecko, Yahoo/yfinance, OpenBB, Alpha Vantage, Finnhub, MarketData.app and MetalpriceAPI. Network access is off by default. Adapter source code is **not** a claim that every live provider or entitlement has been validated.
-
-External evidence is stored with source metadata and must be reviewed before it becomes an active household fact.
-
-## Privacy boundary
-
-Real household JSON, statements, credentials and private reports belong **outside this public repository**. The tools reject private outputs inside the code repository and avoid silently overwriting existing files. Generated HTML embeds its data; publishing a private report publishes that data.
-
-Cloud agent runtimes may receive files you explicitly allow them to read. Local-first does not mean local inference or encryption. See [SECURITY.md](SECURITY.md).
-
-## Not a broker or autonomous adviser
-
-Open Family Office does not place trades, move money, log into banks, file tax returns or choose financial products for the user. Optimizer weights and simulations are research outputs conditional on supplied assumptions.
-
-## Development
+Clone the repository when you want to change the project:
 
 ```bash
+git clone https://github.com/JamesbbBriz/open-family-office.git
+cd open-family-office
+python -m venv .venv
+. .venv/bin/activate
 python -m pip install -e '.[analytics,documents]'
 python -m unittest discover -s tests -v
 node tests/sandbox.test.cjs
 python scripts/release_check.py
 ```
 
-Optional full setup:
+Useful contributions include jurisdiction modules, pension/super models, data importers, provider fixtures, household edge cases, Skill improvements, accessibility fixes and reproducible quantitative research methods.
 
-```bash
-python scripts/bootstrap.py --all
-```
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
-MIT licensed. Third-party components retain their own notices in [THIRD_PARTY.md](THIRD_PARTY.md). Contributions are welcome; see [CONTRIBUTING.md](CONTRIBUTING.md).
+## Project boundary
+
+Open Family Office does not place trades, move money, log into banks, file tax returns or choose financial products on behalf of the user. It is a research and decision-support toolkit. Advanced methods remain useful only to the extent that their inputs and assumptions are useful.
+
+MIT licensed. Third-party components keep their own notices in [THIRD_PARTY.md](THIRD_PARTY.md).
