@@ -1,27 +1,29 @@
 ---
 name: ofo-overview
-description: Explain the household financial position: balance sheet, income durability and liquidity runway.
+description: Explain the household balance sheet, income durability, liquidity and near-term obligations.
 license: MIT
-compatibility: File-aware agent. Python 3.11+ for deterministic calculations; optional integrations require separate setup.
+compatibility: Any file-aware agent with access to the installed ofo CLI or a source checkout.
 ---
 
 # ofo-overview
 
-## Use this when
-Explain the household financial position: balance sheet, income durability and liquidity runway.
+Use this for “where are we now?” questions.
 
-## Outcome
-Validate first, run deterministic calculations, then summarize net worth, spendable liquidity, recurring income, obligations and material concentration gaps.
+## Run
+1. Read AGENTS.md.
+2. Run `ofo validate`; stop and surface blocking input errors.
+3. Run `ofo overview --format markdown`.
+4. Follow snapshot.md, income.md and liquidity.md for interpretation.
 
-## Canonical workflow
-- [`agent/workflows/snapshot.md`](../../../agent/workflows/snapshot.md)
-- [`agent/workflows/income.md`](../../../agent/workflows/income.md)
-- [`agent/workflows/liquidity.md`](../../../agent/workflows/liquidity.md)
+## Explain in this order
+Spendable liquidity → recurring income/outgoings → dated obligations/runway → net worth composition → concentration/ownership issues → stale evidence.
 
-## Operating rules
-1. Read [`AGENTS.md`](../../../AGENTS.md) before using private data.
-2. Work only with files the user explicitly authorizes. Private workspaces live outside this repository.
-3. Run documented `ofo` / `python scripts/ofo.py` calculations before stating numerical results.
-4. Keep confirmed facts, imported evidence, assumptions and model outputs separate.
-5. Do not execute trades, move money, invent missing facts, or present research output as a guaranteed/suitable product recommendation.
-6. End with: what changed, what was calculated, what remains unknown, and the next user-controlled choice.
+Do not lead with portfolio returns when the binding household issue is liquidity.
+
+## Finish with
+Name the two or three decision-relevant findings and offer **ofo-plan** or **ofo-scenario**.
+
+Canonical workflows:
+- [agent/workflows/snapshot.md](../../../agent/workflows/snapshot.md)
+- [agent/workflows/income.md](../../../agent/workflows/income.md)
+- [agent/workflows/liquidity.md](../../../agent/workflows/liquidity.md)
