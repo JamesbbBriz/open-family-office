@@ -1,25 +1,23 @@
 ---
 name: ofo-doctor
-description: Check local installation, optional engines and provider readiness without exposing secrets.
+description: Diagnose installation, optional engines, provider readiness, agent-kit state and MCP setup without exposing secrets.
 license: MIT
-compatibility: File-aware agent. Python 3.11+ for deterministic calculations; optional integrations require separate setup.
+compatibility: Any file-aware agent with the installed ofo CLI.
 ---
 
 # ofo-doctor
 
-## Use this when
-Check local installation, optional engines and provider readiness without exposing secrets.
+Use this when setup, an optional engine, a provider, Skill discovery or MCP is not working.
 
-## Outcome
-Report installed packages, missing environment variable names and unverified integrations. Never print credential values or make paid network calls.
+## Run
+1. Read AGENTS.md.
+2. Run `ofo doctor --workspace .` when inside a private workspace.
+3. Run `ofo agent status` to detect modified/missing managed Skill files.
+4. If Skills are stale, use `ofo agent sync`; never overwrite conflicts.
+5. If MCP is requested, run `ofo mcp-config` and explain that MCP is optional and read-only.
+6. Never print API key values. Do not make a paid or live provider request just to test configuration.
 
-## Canonical workflow
-- [`agent/workflows/doctor.md`](../../../agent/workflows/doctor.md)
+## Finish with
+Return a short table of ready / optional / missing / unverified items and the exact next command needed.
 
-## Operating rules
-1. Read [`AGENTS.md`](../../../AGENTS.md) before using private data.
-2. Work only with files the user explicitly authorizes. Private workspaces live outside this repository.
-3. Run documented `ofo` / `python scripts/ofo.py` calculations before stating numerical results.
-4. Keep confirmed facts, imported evidence, assumptions and model outputs separate.
-5. Do not execute trades, move money, invent missing facts, or present research output as a guaranteed/suitable product recommendation.
-6. End with: what changed, what was calculated, what remains unknown, and the next user-controlled choice.
+Canonical workflow: [agent/workflows/doctor.md](../../../agent/workflows/doctor.md)
