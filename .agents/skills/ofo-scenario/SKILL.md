@@ -1,26 +1,24 @@
 ---
 name: ofo-scenario
-description: Test a what-if event or stress case such as a business sale, job loss, property shock or large purchase.
+description: Test a job loss, business sale, property shock, major purchase, windfall or other explicit household what-if.
 license: MIT
-compatibility: File-aware agent. Python 3.11+ for deterministic calculations; optional integrations require separate setup.
+compatibility: Any file-aware agent with access to the installed ofo CLI or a source checkout.
 ---
 
 # ofo-scenario
 
-## Use this when
-Test a what-if event or stress case such as a business sale, job loss, property shock or large purchase.
+Use this for “what happens if…?” questions.
 
-## Outcome
-Separate immediate balance-sheet shocks from future cash flows; use simulation only for an explicitly declared liquid sleeve.
+## Run
+1. Read AGENTS.md and validate the current household.
+2. Translate the user's event into an explicit scenario file; show assumptions before calculating when they are not already confirmed.
+3. Run `ofo scenario <scenario.json> --format markdown`.
+4. Separate immediate balance-sheet changes from future cash-flow changes.
+5. Use Monte Carlo only if the user explicitly asks about a declared liquid investment sleeve.
 
-## Canonical workflow
-- [`agent/workflows/what-if.md`](../../../agent/workflows/what-if.md)
-- [`agent/workflows/simulate.md`](../../../agent/workflows/simulate.md)
+## Finish with
+State the baseline, changed variables, first material consequence and unresolved assumptions. Offer **ofo-dashboard** or **ofo-plan**.
 
-## Operating rules
-1. Read [`AGENTS.md`](../../../AGENTS.md) before using private data.
-2. Work only with files the user explicitly authorizes. Private workspaces live outside this repository.
-3. Run documented `ofo` / `python scripts/ofo.py` calculations before stating numerical results.
-4. Keep confirmed facts, imported evidence, assumptions and model outputs separate.
-5. Do not execute trades, move money, invent missing facts, or present research output as a guaranteed/suitable product recommendation.
-6. End with: what changed, what was calculated, what remains unknown, and the next user-controlled choice.
+Canonical workflows:
+- [agent/workflows/what-if.md](../../../agent/workflows/what-if.md)
+- [agent/workflows/simulate.md](../../../agent/workflows/simulate.md)
