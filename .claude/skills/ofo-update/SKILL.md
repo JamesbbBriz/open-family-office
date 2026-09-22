@@ -1,26 +1,11 @@
 ---
 name: ofo-update
-description: Add new statements, cash-flow changes, valuations or household facts to an existing private workspace.
+description: Add new statements, valuations, cash-flow changes or household facts without losing history.
 license: MIT
-compatibility: File-aware agent. Python 3.11+ for deterministic calculations; optional integrations require separate setup.
 ---
 
-# ofo-update
+# ofo-update — Claude entrypoint
 
-## Use this when
-Add new statements, cash-flow changes, valuations or household facts to an existing private workspace.
+The canonical user-facing skill is [`.agents/skills/ofo-update/SKILL.md`](../../../.agents/skills/ofo-update/SKILL.md).
 
-## Outcome
-Stage new evidence, reconcile changes, preserve source files, ask for confirmation, then write a new version instead of overwriting the active model.
-
-## Canonical workflow
-- [`agent/workflows/import.md`](../../../agent/workflows/import.md)
-- [`agent/workflows/snapshot.md`](../../../agent/workflows/snapshot.md)
-
-## Operating rules
-1. Read [`AGENTS.md`](../../../AGENTS.md) before using private data.
-2. Work only with files the user explicitly authorizes. Private workspaces live outside this repository.
-3. Run documented `ofo` / `python scripts/ofo.py` calculations before stating numerical results.
-4. Keep confirmed facts, imported evidence, assumptions and model outputs separate.
-5. Do not execute trades, move money, invent missing facts, or present research output as a guaranteed/suitable product recommendation.
-6. End with: what changed, what was calculated, what remains unknown, and the next user-controlled choice.
+Read that file and [`AGENTS.md`](../../../AGENTS.md), then follow them exactly. This wrapper intentionally contains no duplicated financial workflow logic.
