@@ -1,0 +1,836 @@
+<!doctype html>
+<html lang="en" data-theme="ofo">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Open Family Office is an open-source, local-first workspace for household wealth, cash flow and multi-asset allocation research. Try the interactive browser demo.">
+<meta property="og:title" content="Open Family Office — The whole financial picture.">
+<meta property="og:description" content="Understand everything you own, owe, earn and will need. Open-source. Local-first.">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Open Family Office — The whole financial picture.</title>
+<style>/*! tailwindcss v4.1.10 | MIT License | https://tailwindcss.com */
+/*! daisyUI v5 source-derived subset, MIT © 2020 Pouya Saadeghi.
+ * See vendor/daisyui/README.md for upstream blob IDs and local modifications. */
+@layer theme,base,daisyui,components,utilities;
+@layer theme {
+  :root, :host {
+    --font-sans: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+    monospace;
+    --spacing: 0.25rem;
+    --default-font-family: var(--font-sans);
+    --default-mono-font-family: var(--font-mono);
+    --color-base-100: var(--of-base);
+    --color-base-200: var(--of-soft);
+    --color-base-content: var(--of-ink);
+  }
+}
+@layer base {
+  *, ::after, ::before, ::backdrop, ::file-selector-button {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0 solid;
+  }
+  html, :host {
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    tab-size: 4;
+    font-family: var(--default-font-family, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji');
+    font-feature-settings: var(--default-font-feature-settings, normal);
+    font-variation-settings: var(--default-font-variation-settings, normal);
+    -webkit-tap-highlight-color: transparent;
+  }
+  hr {
+    height: 0;
+    color: inherit;
+    border-top-width: 1px;
+  }
+  abbr:where([title]) {
+    -webkit-text-decoration: underline dotted;
+    text-decoration: underline dotted;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-size: inherit;
+    font-weight: inherit;
+  }
+  a {
+    color: inherit;
+    -webkit-text-decoration: inherit;
+    text-decoration: inherit;
+  }
+  b, strong {
+    font-weight: bolder;
+  }
+  code, kbd, samp, pre {
+    font-family: var(--default-mono-font-family, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace);
+    font-feature-settings: var(--default-mono-font-feature-settings, normal);
+    font-variation-settings: var(--default-mono-font-variation-settings, normal);
+    font-size: 1em;
+  }
+  small {
+    font-size: 80%;
+  }
+  sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+  sub {
+    bottom: -0.25em;
+  }
+  sup {
+    top: -0.5em;
+  }
+  table {
+    text-indent: 0;
+    border-color: inherit;
+    border-collapse: collapse;
+  }
+  :-moz-focusring {
+    outline: auto;
+  }
+  progress {
+    vertical-align: baseline;
+  }
+  summary {
+    display: list-item;
+  }
+  ol, ul, menu {
+    list-style: none;
+  }
+  img, svg, video, canvas, audio, iframe, embed, object {
+    display: block;
+    vertical-align: middle;
+  }
+  img, video {
+    max-width: 100%;
+    height: auto;
+  }
+  button, input, select, optgroup, textarea, ::file-selector-button {
+    font: inherit;
+    font-feature-settings: inherit;
+    font-variation-settings: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+    border-radius: 0;
+    background-color: transparent;
+    opacity: 1;
+  }
+  :where(select:is([multiple], [size])) optgroup {
+    font-weight: bolder;
+  }
+  :where(select:is([multiple], [size])) optgroup option {
+    padding-inline-start: 20px;
+  }
+  ::file-selector-button {
+    margin-inline-end: 4px;
+  }
+  ::placeholder {
+    opacity: 1;
+  }
+  @supports (not (-webkit-appearance: -apple-pay-button))  or (contain-intrinsic-size: 1px) {
+    ::placeholder {
+      color: currentcolor;
+      @supports (color: color-mix(in lab, red, red)) {
+        color: color-mix(in oklab, currentcolor 50%, transparent);
+      }
+    }
+  }
+  textarea {
+    resize: vertical;
+  }
+  ::-webkit-search-decoration {
+    -webkit-appearance: none;
+  }
+  ::-webkit-date-and-time-value {
+    min-height: 1lh;
+    text-align: inherit;
+  }
+  ::-webkit-datetime-edit {
+    display: inline-flex;
+  }
+  ::-webkit-datetime-edit-fields-wrapper {
+    padding: 0;
+  }
+  ::-webkit-datetime-edit, ::-webkit-datetime-edit-year-field, ::-webkit-datetime-edit-month-field, ::-webkit-datetime-edit-day-field, ::-webkit-datetime-edit-hour-field, ::-webkit-datetime-edit-minute-field, ::-webkit-datetime-edit-second-field, ::-webkit-datetime-edit-millisecond-field, ::-webkit-datetime-edit-meridiem-field {
+    padding-block: 0;
+  }
+  :-moz-ui-invalid {
+    box-shadow: none;
+  }
+  button, input:where([type='button'], [type='reset'], [type='submit']), ::file-selector-button {
+    appearance: button;
+  }
+  ::-webkit-inner-spin-button, ::-webkit-outer-spin-button {
+    height: auto;
+  }
+  [hidden]:where(:not([hidden='until-found'])) {
+    display: none !important;
+  }
+}
+:where(.btn) {
+  @layer daisyui.l1.l2.l3 {
+    width: unset;
+  }
+}
+.btn {
+  @layer daisyui.l1.l2.l3 {
+    --size: calc(var(--size-field,.25rem)*10);
+    --btn-p: 1rem;
+    --btn-fg: var(--color-base-content);
+    display: inline-flex;
+    flex-shrink: 0;
+    cursor: pointer;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    gap: calc(var(--spacing) * 1.5);
+    text-align: center;
+    vertical-align: middle;
+    outline-offset: 2px;
+    -webkit-user-select: none;
+    user-select: none;
+    font-weight: 600;
+    border-start-start-radius: var(--join-ss,var(--radius-field));
+    border-start-end-radius: var(--join-se,var(--radius-field));
+    border-end-start-radius: var(--join-es,var(--radius-field));
+    border-end-end-radius: var(--join-ee,var(--radius-field));
+    border-width: var(--border);
+    touch-action: manipulation;
+    transition-property: color,background-color,border-color,box-shadow,transform;
+    transition-timing-function: cubic-bezier(0,0,.2,1);
+    transition-duration: .2s;
+    --btn-bg: var(--btn-color,var(--color-base-200));
+    --btn-border: var(--btn-color,var(--color-base-200));
+    @supports (color: color-mix(in lab, red, red)) {
+      --btn-border: color-mix(in oklab,var(--btn-color,var(--color-base-200)),#000 calc(var(--depth)*5%));
+    }
+    height: var(--size);
+    padding-inline: var(--btn-p);
+    font-size: var(--fontsize,.875rem);
+    background-color: var(--btn-bg);
+    color: var(--btn-fg);
+    border-color: var(--btn-border);
+    border-style: var(--btn-border-style,solid);
+    outline-color: var(--btn-color,var(--color-base-content));
+  }
+  @layer daisyui.l1 {
+    @media (hover:hover) {
+      &:hover {
+        --btn-bg: var(--btn-color,var(--color-base-200));
+        @supports (color: color-mix(in lab, red, red)) {
+          --btn-bg: color-mix(in oklab,var(--btn-color,var(--color-base-200)),#000 7%);
+        }
+        color: var(--btn-fg);
+        --btn-border: var(--btn-bg);
+        @supports (color: color-mix(in lab, red, red)) {
+          --btn-border: color-mix(in oklab,var(--btn-bg),#000 calc(var(--depth)*5%));
+        }
+      }
+    }
+    &:active {
+      translate: 0 .5px;
+    }
+    &:focus-visible,&:has(:focus-visible) {
+      outline-width: 2px;
+      outline-style: solid;
+      isolation: isolate;
+    }
+  }
+}
+.btn-outline {
+  @layer daisyui.l1.l2.l3 {
+    --btn-bg: #0000;
+    color: var(--btn-rest-fg,var(--btn-color,var(--color-base-content)));
+    --btn-border: var(--btn-color,var(--color-base-content));
+    --btn-border-style: solid;
+    background-image: none;
+  }
+}
+.btn-ghost {
+  @layer daisyui.l1.l2.l3 {
+    --btn-bg: #0000;
+    color: var(--btn-rest-fg,var(--btn-color,var(--color-base-content,currentColor)));
+    --btn-border: #0000;
+    background-image: none;
+  }
+}
+.btn-soft {
+  @layer daisyui.l1.l2.l3 {
+    --btn-bg: var(--btn-color,var(--color-base-content));
+    @supports (color: color-mix(in lab, red, red)) {
+      --btn-bg: color-mix(in oklab,var(--btn-color,var(--color-base-content)) 8%,var(--color-base-100));
+    }
+    color: var(--btn-rest-fg,var(--btn-color,var(--color-base-content)));
+    --btn-border: var(--btn-color,var(--color-base-content));
+    @supports (color: color-mix(in lab, red, red)) {
+      --btn-border: color-mix(in oklab,var(--btn-color,var(--color-base-content)) 10%,var(--color-base-100));
+    }
+  }
+}
+.btn-square {
+  @layer daisyui.l1.l2 {
+    padding-inline: calc(var(--spacing) * 0);
+    width: var(--size);
+    height: var(--size);
+  }
+}
+.btn-circle {
+  @layer daisyui.l1.l2 {
+    border-radius: calc(infinity * 1px);
+    padding-inline: calc(var(--spacing) * 0);
+    width: var(--size);
+    height: var(--size);
+  }
+}
+.btn-disabled,.btn:is(:disabled,[disabled],[aria-disabled="true"]) {
+  @layer daisyui {
+    pointer-events: none;
+    opacity: .4;
+  }
+}
+.card {
+  @layer daisyui.l1.l2.l3 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--of-box);
+    transition: outline .2s ease-in-out;
+    outline: 2px solid #0000;
+    outline-offset: 2px;
+    &:focus-visible,&[aria-checked="true"] {
+      outline-color: currentColor;
+    }
+  }
+  @layer daisyui.l1.l2.l3.l4 {
+    figure {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    figure:first-child {
+      overflow: hidden;
+      border-start-start-radius: inherit;
+      border-start-end-radius: inherit;
+    }
+    figure:last-child {
+      overflow: hidden;
+      border-end-start-radius: inherit;
+      border-end-end-radius: inherit;
+    }
+  }
+}
+.card-border {
+  @layer daisyui.l1.l2 {
+    border: var(--border) solid var(--color-base-200);
+  }
+}
+.card-title {
+  @layer daisyui.l1.l2.l3 {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--spacing) * 2);
+    font-size: var(--cardtitle-fs,1.125rem);
+    font-weight: 600;
+  }
+}
+.card-body {
+  @layer daisyui.l1.l2.l3 {
+    display: flex;
+    flex: auto;
+    flex-direction: column;
+    gap: calc(var(--spacing) * 2);
+    padding: var(--card-p,1.5rem);
+    font-size: var(--card-fs,.875rem);
+  }
+}
+.card-actions {
+  @layer daisyui.l1.l2.l3 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: calc(var(--spacing) * 2);
+  }
+}
+.badge {
+  @layer daisyui.l1.l2.l3 {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    gap: calc(var(--spacing) * 2);
+    border-radius: var(--of-selector);
+    vertical-align: middle;
+    color: var(--badge-fg);
+    border: var(--border) solid var(--badge-color,var(--color-base-200));
+    font-size: .875rem;
+    width: fit-content;
+    background-color: var(--badge-bg);
+    --badge-bg: var(--badge-color,var(--color-base-100));
+    --badge-fg: var(--color-base-content);
+    --size: calc(var(--size-selector,.25rem)*6);
+    height: var(--size);
+    padding-inline: calc(var(--size)/2 - var(--border));
+  }
+}
+.badge-outline {
+  @layer daisyui.l1.l2 {
+    color: var(--badge-color);
+    --badge-bg: #0000;
+    border-color: currentColor;
+  }
+}
+.badge-soft {
+  @layer daisyui.l1.l2 {
+    color: var(--badge-color,var(--color-base-content));
+    background-color: var(--badge-color,var(--color-base-content));
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab,var(--badge-color,var(--color-base-content)) 8%,var(--color-base-100));
+    }
+    border-color: var(--badge-color,var(--color-base-content));
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab,var(--badge-color,var(--color-base-content)) 10%,var(--color-base-100));
+    }
+  }
+}
+.input {
+  @layer daisyui.l1.l2.l3 {
+    position: relative;
+    display: inline-flex;
+    flex-shrink: 1;
+    appearance: none;
+    align-items: center;
+    gap: calc(var(--spacing) * 2);
+    background-color: var(--of-base);
+    padding-inline: calc(var(--spacing) * 3);
+    vertical-align: middle;
+    white-space: nowrap;
+    --size: calc(var(--size-field,.25rem)*var(--in-size-mul,10));
+    --input-color: var(--color-base-content);
+    @supports (color: color-mix(in lab, red, red)) {
+      --input-color: color-mix(in oklab,var(--color-base-content) 20%,#0000);
+    }
+    cursor: text;
+    width: clamp(3rem,20rem,100%);
+    height: var(--size);
+    font-size: max(var(--font-size,0rem),var(--font-size-min,.875rem));
+    touch-action: manipulation;
+    border-start-start-radius: var(--join-ss,var(--radius-field));
+    border-start-end-radius: var(--join-se,var(--radius-field));
+    border-end-start-radius: var(--join-es,var(--radius-field));
+    border-end-end-radius: var(--join-ee,var(--radius-field));
+    border: var(--border) solid var(--input-color,#0000);
+    &:focus,&:focus-within {
+      --input-color: var(--color-base-content);
+      outline: 2px solid var(--input-color);
+      outline-offset: 2px;
+    }
+  }
+  @layer daisyui.l1.l2 {
+    &:is(:disabled,[disabled]) {
+      cursor: not-allowed;
+      border-color: var(--of-soft);
+      background-color: var(--of-soft);
+    }
+  }
+}
+.btn-primary {
+  @layer daisyui.l1.l2 {
+    --btn-color: var(--color-primary);
+    --btn-fg: var(--color-primary-content);
+  }
+}
+.badge-primary {
+  @layer daisyui.l1.l2 {
+    --badge-color: var(--color-primary);
+    --badge-fg: var(--color-primary-content);
+  }
+}
+.btn-secondary {
+  @layer daisyui.l1.l2 {
+    --btn-color: var(--color-secondary);
+    --btn-fg: var(--color-secondary-content);
+  }
+}
+.badge-secondary {
+  @layer daisyui.l1.l2 {
+    --badge-color: var(--color-secondary);
+    --badge-fg: var(--color-secondary-content);
+  }
+}
+.btn-accent {
+  @layer daisyui.l1.l2 {
+    --btn-color: var(--color-accent);
+    --btn-fg: var(--color-accent-content);
+  }
+}
+.badge-accent {
+  @layer daisyui.l1.l2 {
+    --badge-color: var(--color-accent);
+    --badge-fg: var(--color-accent-content);
+  }
+}
+.btn-neutral {
+  @layer daisyui.l1.l2 {
+    --btn-color: var(--color-neutral);
+    --btn-fg: var(--color-neutral-content);
+  }
+}
+.badge-neutral {
+  @layer daisyui.l1.l2 {
+    --badge-color: var(--color-neutral);
+    --badge-fg: var(--color-neutral-content);
+  }
+}
+.btn-info {
+  @layer daisyui.l1.l2 {
+    --btn-color: var(--color-info);
+    --btn-fg: var(--color-info-content);
+  }
+}
+.badge-info {
+  @layer daisyui.l1.l2 {
+    --badge-color: var(--color-info);
+    --badge-fg: var(--color-info-content);
+  }
+}
+.btn-success {
+  @layer daisyui.l1.l2 {
+    --btn-color: var(--color-success);
+    --btn-fg: var(--color-success-content);
+  }
+}
+.badge-success {
+  @layer daisyui.l1.l2 {
+    --badge-color: var(--color-success);
+    --badge-fg: var(--color-success-content);
+  }
+}
+.btn-warning {
+  @layer daisyui.l1.l2 {
+    --btn-color: var(--color-warning);
+    --btn-fg: var(--color-warning-content);
+  }
+}
+.badge-warning {
+  @layer daisyui.l1.l2 {
+    --badge-color: var(--color-warning);
+    --badge-fg: var(--color-warning-content);
+  }
+}
+.btn-error {
+  @layer daisyui.l1.l2 {
+    --btn-color: var(--color-error);
+    --btn-fg: var(--color-error-content);
+  }
+}
+.badge-error {
+  @layer daisyui.l1.l2 {
+    --badge-color: var(--color-error);
+    --badge-fg: var(--color-error-content);
+  }
+}
+.btn-xs {
+  @layer daisyui.l1.l2 {
+    --fontsize: .6875rem;
+    --btn-p: .5rem;
+    --size: calc(var(--size-field,.25rem)*6);
+  }
+}
+.input-xs {
+  @layer daisyui.l1.l2 {
+    --font-size-min: .6875rem;
+    --in-size-mul: 6;
+  }
+}
+.btn-sm {
+  @layer daisyui.l1.l2 {
+    --fontsize: .75rem;
+    --btn-p: .75rem;
+    --size: calc(var(--size-field,.25rem)*8);
+  }
+}
+.input-sm {
+  @layer daisyui.l1.l2 {
+    --font-size-min: .75rem;
+    --in-size-mul: 8;
+  }
+}
+.btn-md {
+  @layer daisyui.l1.l2 {
+    --fontsize: .875rem;
+    --btn-p: 1rem;
+    --size: calc(var(--size-field,.25rem)*10);
+  }
+}
+.input-md {
+  @layer daisyui.l1.l2 {
+    --font-size-min: .875rem;
+    --in-size-mul: 10;
+  }
+}
+.btn-lg {
+  @layer daisyui.l1.l2 {
+    --fontsize: 1.125rem;
+    --btn-p: 1.25rem;
+    --size: calc(var(--size-field,.25rem)*12);
+  }
+}
+.input-lg {
+  @layer daisyui.l1.l2 {
+    --font-size-min: 1.125rem;
+    --in-size-mul: 12;
+  }
+}
+.badge-xs {
+  @layer daisyui.l1.l2 {
+    --size: calc(var(--size-selector,.25rem)*4);
+    font-size: .625rem;
+  }
+}
+.badge-sm {
+  @layer daisyui.l1.l2 {
+    --size: calc(var(--size-selector,.25rem)*5);
+    font-size: .75rem;
+  }
+}
+.badge-md {
+  @layer daisyui.l1.l2 {
+    --size: calc(var(--size-selector,.25rem)*6);
+    font-size: .875rem;
+  }
+}
+.visible {
+  visibility: visible;
+}
+.fixed {
+  position: fixed;
+}
+.relative {
+  position: relative;
+}
+.static {
+  position: static;
+}
+.isolate {
+  isolation: isolate;
+}
+.m-1 {
+  margin: calc(var(--spacing) * 1);
+}
+.mb-5 {
+  margin-bottom: calc(var(--spacing) * 5);
+}
+.flex {
+  display: flex;
+}
+.grid {
+  display: grid;
+}
+.hidden {
+  display: none;
+}
+.table {
+  display: table;
+}
+.resize {
+  resize: both;
+}
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+.items-center {
+  align-items: center;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.gap-2 {
+  gap: calc(var(--spacing) * 2);
+}
+.gap-5 {
+  gap: calc(var(--spacing) * 5);
+}
+.text-right {
+  text-align: right;
+}
+.xl\:col-span-2 {
+  @media (width >= 80rem) {
+    grid-column: span 2 / span 2;
+  }
+}
+.xl\:grid-cols-2 {
+  @media (width >= 80rem) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.xl\:grid-cols-3 {
+  @media (width >= 80rem) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+</style><style>
+:root,[data-theme="ofo"]{color-scheme:light;--of-base:#ffffff;--of-soft:#eff2ed;--of-ink:#20322d;--of-box:14px;--of-selector:6px;--color-base-100:var(--of-base);--color-base-200:var(--of-soft);--color-base-content:var(--of-ink);--color-primary:#25644f;--color-primary-content:#fff;--color-secondary:#567589;--color-secondary-content:#fff;--color-accent:#c59b64;--color-accent-content:#211c14;--color-neutral:#21382f;--color-neutral-content:#fff;--color-success:#27735b;--color-success-content:#fff;--color-info:#426c8e;--color-info-content:#fff;--color-warning:#976321;--color-warning-content:#fff;--color-error:#b15750;--color-error-content:#fff;--radius-field:8px;--radius-box:14px;--radius-selector:6px;--size-field:.25rem;--size-selector:.25rem;--border:1px;--depth:0;--noise:0;--fx-noise:none;--bg:#f7f8f4;--surface:var(--of-base);--text:var(--of-ink);--muted:#63776e;--line:#e0e7df;--accent:var(--color-primary);--accent-soft:#eaf3eb;--grid:#e9ede7;--chart-font:#607469;--shadow:0 20px 60px -30px #233e3540;}
+[data-theme="ofo-dark"],.dark{color-scheme:dark;--of-base:#192920;--of-soft:#23372c;--of-ink:#e9f1e9;--color-primary:#90c6a6;--color-primary-content:#12291e;--bg:#112019;--muted:#a0b7a9;--line:#34493b;--accent-soft:#244532;--grid:#2c4234;--chart-font:#a9c0b2;--shadow:0 20px 60px -30px #0008;}
+html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}*{box-sizing:border-box}a{color:inherit;text-decoration:none}button,input,select{font:inherit}button,a,input,select,summary{touch-action:manipulation}button:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:4px}.brand{display:inline-flex;gap:11px;align-items:center;font-size:17px;letter-spacing:-.5px;font-weight:650;line-height:1.2}.brand-mark{width:35px;height:35px;border-radius:9px;background:#25644f;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:500;font-size:14px;letter-spacing:-2px;flex-shrink:0}.brand small{display:block;font-size:10px;font-weight:500;letter-spacing:1.8px;margin-top:3px;color:var(--muted)}.eyebrow{font-size:10px;letter-spacing:1.5px;font-weight:650;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:8px}.status-dot{width:6px;height:6px;border-radius:100%;display:inline-block;background:#548569;flex-shrink:0}.btn{gap:8px;text-decoration:none}.btn-outline{--btn-color:var(--line);color:var(--text)}.card{background:var(--surface);border:1px solid var(--line)}.card-body{gap:12px}.muted{color:var(--muted)}.mono{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-variant-numeric:tabular-nums}.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}.skip-link{position:absolute;top:-90px;left:15px;padding:10px;background:var(--surface);z-index:100}.skip-link:focus{top:10px}[hidden]{display:none!important}summary{cursor:pointer}.input{color:var(--text);width:100%;font-variant-numeric:tabular-nums}.input:focus{--input-color:var(--accent)}.button-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.site-wrap{max-width:1200px;padding:0 30px;margin:auto}.site-nav{display:flex;align-items:center;justify-content:space-between;padding:25px 0;gap:22px}.nav-links{display:flex;gap:24px;align-items:center;font-size:12px}.section-label{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent)}
+@media(max-width:650px){.site-wrap{padding:0 20px}.site-nav{padding:18px 0}.nav-links>.nav-text{display:none}.nav-links{gap:6px}.brand{font-size:15px}.brand-mark{width:31px;height:31px}.btn{--fontsize:.8125rem}.site-nav .btn{--btn-p:.65rem}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
+.btn-primary:not(.btn-outline):not(.btn-ghost):not(.btn-soft){color:var(--color-primary-content)}
+</style><style>.hero-section{padding-top:65px;padding-bottom:65px;display:grid;grid-template-columns:1fr 1fr;gap:62px;align-items:center}.hero-copy h1{font-size:clamp(40px,4.4vw,64px);font-weight:560;line-height:1.12;letter-spacing:-2.9px;margin:24px 0}.hero-copy h1 em{font-family:Georgia,"Times New Roman",serif;font-weight:400;color:var(--accent)}.hero-description{font-size:16px;line-height:1.85;color:var(--muted);max-width:455px;margin-bottom:28px}.hero-copy .btn-lg{--size:48px;--fontsize:13px;--btn-p:18px}.hero-note{font-size:11px;color:var(--muted);margin-top:16px}.hero-visual{min-width:0;position:relative}.preview-window{box-shadow:0 24px 65px -25px #2a4a3640;border-radius:16px;transform:rotate(1deg);overflow:hidden}.preview-top{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding:12px 19px;font-size:9px;letter-spacing:1.25px;color:var(--muted);background:var(--of-soft)}.window-dots{display:flex;gap:5px}.window-dots i{display:block;width:6px;height:6px;border-radius:50%;background:#b4c1b6}.preview-inner{padding:24px}.preview-heading{display:flex;align-items:center;justify-content:space-between;gap:8px}.preview-heading h2{font-size:16px;letter-spacing:-.5px;margin-top:6px;font-weight:550}.preview-date{font-size:10px;color:var(--muted)}.preview-kpis{display:grid;grid-template-columns:1fr 1fr;gap:25px;padding:24px 0;border-bottom:1px solid var(--line)}.preview-kpis>div>span{display:block;color:var(--muted);font-size:11px}.preview-kpis strong{display:block;font-size:34px;line-height:1.4;font-weight:570;letter-spacing:-1px;font-variant-numeric:tabular-nums}.preview-kpis strong span{font-size:23px;font-weight:400}.preview-kpis small{font-size:9px;color:var(--muted)}.preview-chart-heading{display:flex;justify-content:space-between;align-items:center;margin:21px 0 10px}.preview-chart-heading strong{font-size:11px;font-weight:550}.preview-chart{height:155px}.preview-chart svg{width:100%;height:100%;overflow:visible}.preview-labels{display:flex;justify-content:space-between;color:var(--muted);font-size:9px;margin-top:5px}.preview-insight{background:var(--accent-soft);padding:12px;border-radius:8px;display:flex;align-items:flex-start;gap:10px;margin-top:20px}.insight-symbol{font-size:20px;color:var(--accent);line-height:1.1}.preview-insight strong{font-size:11px;display:block;font-weight:600}.preview-insight div>span{display:block;font-size:10px;color:var(--muted);margin-top:3px}.preview-caption{font-size:10px;color:var(--muted);display:flex;align-items:center;justify-content:center;gap:7px;margin-top:21px}.asset-strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 0;display:flex;align-items:center;justify-content:space-between;gap:24px}.asset-strip>span{font-size:9px;letter-spacing:1.2px;color:var(--muted);flex-shrink:0}.asset-strip>div{display:flex;gap:19px;flex-wrap:wrap;font-size:11px;color:var(--muted)}.asset-strip b{color:#b8c6b8;font-weight:400}.why-section{padding-top:68px;padding-bottom:40px}.section-intro h2,.local-copy h2{font-size:35px;letter-spacing:-1.2px;font-weight:550;margin:12px 0 8px;line-height:1.25}.section-intro p{color:var(--muted);font-size:14px}.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:30px}.feature-grid .card{box-shadow:none}.feature-grid .card-body{padding:24px}.feature-number{color:var(--accent);font-size:11px;letter-spacing:1px;display:flex;justify-content:space-between}.feature-number span{font-size:22px;line-height:1;color:#81a58d}.feature-grid h3{font-weight:600;font-size:17px;letter-spacing:-.4px;margin-top:9px;line-height:1.5}.feature-grid p{font-size:12px;color:var(--muted);line-height:1.9}.try-section{padding-bottom:64px}.try-banner{border:1px solid #d6e6d6;border-radius:13px;padding:27px 30px;background:var(--accent-soft);display:flex;gap:30px;align-items:center;justify-content:space-between}.try-banner h2{font-size:23px;font-weight:550;letter-spacing:-.7px;margin:7px 0}.try-banner p{color:var(--muted);font-size:12px;max-width:620px;line-height:1.9}.local-section{display:grid;grid-template-columns:1fr 1fr;gap:65px;border-top:1px solid var(--line);padding-top:65px;padding-bottom:65px;align-items:center;scroll-margin-top:20px}.local-copy>p{color:var(--muted);font-size:13px;line-height:1.85;margin-top:18px}.local-points{margin-top:23px}.local-points p{border-left:2px solid #c9dbca;padding-left:14px;margin-bottom:17px}.local-points strong{font-size:12px;display:block;margin-bottom:4px}.local-points span{font-size:12px;line-height:1.8;color:var(--muted);display:block}.local-copy .small-note{font-size:10px}.local-terminal{box-shadow:var(--shadow)}.terminal-top{border-bottom:1px solid var(--line);padding:17px 22px;font-size:11px;display:flex;justify-content:space-between;align-items:center}.terminal-body{padding:25px}.terminal-comment{display:block;font-size:11px;font-family:ui-monospace,SFMono-Regular,monospace;color:var(--muted);margin-bottom:9px}.terminal-body code{display:block;font-family:ui-monospace,SFMono-Regular,monospace;font-size:12px;color:var(--accent);padding:12px 14px;background:var(--of-soft);border-radius:6px;margin-bottom:24px;overflow-x:auto;white-space:nowrap}.terminal-divider{height:1px;background:var(--line);margin-bottom:18px}.terminal-body>p{font-size:11px;line-height:1.9;color:var(--muted);margin-bottom:20px}.terminal-body .button-row{gap:9px}.terminal-body .btn{--fontsize:12px;--btn-p:14px}.faq-section{display:grid;grid-template-columns:1fr 2fr;gap:40px;padding-top:35px;padding-bottom:65px}.faq-section>.section-label{padding-top:20px}.faq-list details{border-bottom:1px solid var(--line)}.faq-list summary{font-size:13px;font-weight:550;padding:19px 0;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:10px}.faq-list summary::-webkit-details-marker{display:none}.faq-list summary::after{content:'+';color:var(--muted);font-size:20px;font-weight:400}.faq-list details[open] summary::after{content:'−'}.faq-list details p{font-size:12px;color:var(--muted);line-height:1.9;padding-bottom:18px}.landing-footer{padding:25px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:20px}.landing-footer .brand{font-size:13px}.landing-footer .brand-mark{height:29px;width:29px;font-size:12px}.landing-footer>span{font-size:10px;color:var(--muted)}.landing-footer>a:last-child{font-size:11px;color:var(--accent)}.footer-note{font-size:9px;color:var(--muted);margin-bottom:25px}#why{scroll-margin-top:20px}
+@media(min-width:1500px){.hero-section{padding-top:80px;padding-bottom:80px}}
+@media(max-width:1000px){.hero-section{gap:30px}.hero-copy h1{font-size:48px}.hero-description{font-size:14px}.preview-inner{padding:18px}.preview-heading h2{font-size:14px}.preview-kpis strong{font-size:30px}.asset-strip{display:block}.asset-strip>div{margin-top:12px;gap:15px}.local-section{gap:35px}}
+@media(max-width:760px){.hero-section{grid-template-columns:1fr;padding-top:35px;gap:38px}.hero-copy h1{font-size:54px;letter-spacing:-2.4px}.hero-description{max-width:530px}.hero-visual{max-width:530px;width:100%;margin:auto}.preview-window{transform:none}.feature-grid{grid-template-columns:1fr;gap:13px}.feature-grid .card-body{padding:23px}.feature-grid p{max-width:560px}.why-section{padding-top:43px}.feature-grid h3{margin-top:0}.try-banner{flex-direction:column;align-items:flex-start;gap:19px;padding:24px}.local-section{grid-template-columns:1fr;padding-top:42px;padding-bottom:40px;gap:30px}.faq-section{grid-template-columns:1fr;gap:10px;padding-top:5px;padding-bottom:40px}.landing-footer{flex-wrap:wrap}.landing-footer>span{order:3;flex-basis:100%}.asset-strip b{display:none}.asset-strip>div{column-gap:21px;row-gap:8px}.section-intro h2,.local-copy h2{font-size:30px}}
+@media(max-width:400px){.hero-copy h1{font-size:44px;letter-spacing:-2px}.hero-copy .button-row{gap:10px}.hero-copy .btn-lg{--fontsize:12px;--btn-p:12px;--size:44px}.preview-inner{padding:16px}.preview-kpis{gap:10px}.preview-kpis strong{font-size:27px}.preview-kpis small{font-size:8px}.preview-heading h2{font-size:12px}.preview-caption{font-size:8px}.nav-links .btn-primary{display:none}.terminal-body{padding:20px}.terminal-body code{font-size:10px}.terminal-body .btn{--fontsize:11px;--btn-p:10px}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-wrap"><nav class="site-nav" aria-label="Main navigation">
+<a href="index.html" class="brand" aria-label="Open Family Office home"><span class="brand-mark" aria-hidden="true">[O]</span><span>Open Family Office<small>THE WHOLE PICTURE</small></span></a>
+<div class="nav-links"><a class="nav-text" href="#why" data-en="Why OFO" data-zh="为什么选择 OFO">Why OFO</a><a class="nav-text" href="#local" data-en="Use locally" data-zh="本地使用">Use locally</a><button class="btn btn-ghost btn-sm" id="landingLang" aria-label="Switch language">中文</button><button class="btn btn-ghost btn-sm btn-square" id="landingTheme" aria-label="Toggle colour theme">◐</button><a class="btn btn-primary btn-sm" href="demo.html" data-en="Try demo ↗" data-zh="体验 Demo ↗">Try demo ↗</a></div>
+</nav></header>
+<main id="main">
+<section class="site-wrap hero-section">
+<div class="hero-copy"><div class="eyebrow"><span class="status-dot"></span><span data-en="OPEN SOURCE · LOCAL FIRST · v0.3" data-zh="开源 · 本地优先 · v0.3">OPEN SOURCE · LOCAL FIRST · v0.3</span></div>
+<h1><span data-en="Your whole" data-zh="你的全部">Your whole</span><br><span data-en="financial life." data-zh="财务生活。">financial life.</span><br><em data-en="One clear picture." data-zh="终于，一目了然。">One clear picture.</em></h1>
+<p class="hero-description" data-en="Assets, debts, income and the life you’re planning. Understand how they fit together — before deciding where your money goes." data-zh="资产、负债、收入，以及你正在规划的生活。先理解它们之间的关系，再决定资金如何配置。">Assets, debts, income and the life you’re planning. Understand how they fit together — before deciding where your money goes.</p>
+<div class="button-row"><a class="btn btn-primary btn-lg" href="demo.html" data-en="Explore the demo ↗" data-zh="探索交互演示 ↗">Explore the demo ↗</a><a class="btn btn-outline btn-lg" href="#local" data-en="Use on your machine" data-zh="在本机使用">Use on your machine</a></div>
+<p class="hero-note" data-en="No sign-up. No API key. Synthetic data to get you started." data-zh="无需注册，无需 API Key。先用虚构案例体验。">No sign-up. No API key. Synthetic data to get you started.</p>
+</div>
+<div class="hero-visual" aria-label="Preview of the synthetic family dashboard">
+<div class="preview-window card"><div class="preview-top"><div class="window-dots"><i></i><i></i><i></i></div><span>OPEN FAMILY OFFICE</span><span class="badge badge-soft badge-success badge-xs" data-en="DEMO" data-zh="演示">DEMO</span></div>
+<div class="preview-inner"><div class="preview-heading"><div><div class="section-label" data-en="THE WHOLE PICTURE" data-zh="家庭财富全貌">THE WHOLE PICTURE</div><h2 data-en="A family. Not just a portfolio." data-zh="看见家庭，而不只是持仓。">A family. Not just a portfolio.</h2></div><span class="preview-date">AUD</span></div>
+<div class="preview-kpis"><div><span data-en="Net worth" data-zh="净资产">Net worth</span><strong>A$1.80<span>M</span></strong><small data-en="Assets less liabilities" data-zh="资产减去负债">Assets less liabilities</small></div><div><span data-en="Spendable cash" data-zh="可用现金">Spendable cash</span><strong>A$120<span>K</span></strong><small data-en="Not the same as wealth" data-zh="现金并不等于财富">Not the same as wealth</small></div></div>
+<div class="preview-chart-heading"><strong data-en="Can the cash keep up?" data-zh="现金能否跟上支出？">Can the cash keep up?</strong><span class="badge badge-outline badge-xs">24M</span></div>
+<div class="preview-chart"><svg viewBox="0 0 435 150" role="img" aria-label="Synthetic baseline cash budget starts at 120,000 Australian dollars and ends at 94,000 after 24 months"><defs><linearGradient id="cash-fill" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#72a78c" stop-opacity=".25"/><stop offset="1" stop-color="#72a78c" stop-opacity=".02"/></linearGradient></defs><path d="M 8,22 H 426 M 8,61 H 426 M 8,100 H 426 M 8,139 H 426" fill="none" stroke="var(--line)" stroke-dasharray="3 5"/><path d="M 8.00,38.06 L 25.42,36.36 L 42.83,34.66 L 60.25,32.96 L 77.67,31.26 L 95.08,29.57 L 112.50,48.25 L 129.92,46.56 L 147.33,44.86 L 164.75,85.63 L 182.17,83.93 L 199.58,82.23 L 217.00,80.54 L 234.42,78.84 L 251.83,77.14 L 269.25,75.44 L 286.67,73.74 L 304.08,72.04 L 321.50,70.34 L 338.92,68.64 L 356.33,66.94 L 373.75,65.24 L 391.17,63.55 L 408.58,61.85 L 426.00,60.15 L 426,140 L 8,140 Z" fill="url(#cash-fill)"/><path d="M 8.00,38.06 L 25.42,36.36 L 42.83,34.66 L 60.25,32.96 L 77.67,31.26 L 95.08,29.57 L 112.50,48.25 L 129.92,46.56 L 147.33,44.86 L 164.75,85.63 L 182.17,83.93 L 199.58,82.23 L 217.00,80.54 L 234.42,78.84 L 251.83,77.14 L 269.25,75.44 L 286.67,73.74 L 304.08,72.04 L 321.50,70.34 L 338.92,68.64 L 356.33,66.94 L 373.75,65.24 L 391.17,63.55 L 408.58,61.85 L 426.00,60.15" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="426.00" cy="60.15" r="3.5" fill="var(--accent)"/></svg></div>
+<div class="preview-labels"><span data-en="Today" data-zh="今天">Today</span><span data-en="12 months" data-zh="12个月">12 months</span><span data-en="24 months" data-zh="24个月">24 months</span></div>
+<div class="preview-insight"><span class="insight-symbol">↳</span><div><strong data-en="Income is not all the same." data-zh="收入，不只有一种。">Income is not all the same.</strong><span data-en="Separate a steady salary from a one-off business sale." data-zh="区分持续工资与一次性企业出售所得。">Separate a steady salary from a one-off business sale.</span></div></div>
+</div></div>
+<div class="preview-caption"><span class="status-dot"></span><span data-en="Actual sample cash budget · no invented investment returns" data-zh="来自演示案例的现金预算 · 不虚构投资收益">Actual sample cash budget · no invented investment returns</span></div>
+</div>
+</section>
+<div class="site-wrap"><div class="asset-strip"><span data-en="BEYOND THE BROKERAGE" data-zh="不止证券账户">BEYOND THE BROKERAGE</span><div><span data-en="Cash & bonds" data-zh="现金与债券">Cash & bonds</span><b>·</b><span data-en="Public markets" data-zh="公开市场">Public markets</span><b>·</b><span data-en="Property" data-zh="房产">Property</span><b>·</b><span data-en="Private businesses" data-zh="私人企业">Private businesses</span><b>·</b><span data-en="Pensions" data-zh="养老金">Pensions</span><b>·</b><span data-en="Custom assets" data-zh="自定义资产">Custom assets</span></div></div></div>
+<section id="why" class="site-wrap why-section"><div class="section-intro"><div class="section-label" data-en="CONTEXT BEFORE ALLOCATION" data-zh="先理解家庭，再配置资产">CONTEXT BEFORE ALLOCATION</div><h2 data-en="A better set of questions." data-zh="先问更重要的问题。">A better set of questions.</h2><p data-en="Not “which stock should I buy?” but “what does my family actually need?”" data-zh="不是“该买哪只股票？”，而是“我的家庭究竟需要什么？”">Not “which stock should I buy?” but “what does my family actually need?”</p></div>
+<div class="feature-grid">
+<article class="card"><div class="card-body"><div class="feature-number">01 <span>↗</span></div><h3 data-en="See everything together." data-zh="放在一起，才看得清。">See everything together.</h3><p data-en="Bring property, business equity, investments and debt into one household balance sheet. Keep ownership and restrictions visible." data-zh="将房产、企业股权、金融投资和负债纳入家庭资产负债表，明确归属和资金限制。">Bring property, business equity, investments and debt into one household balance sheet. Keep ownership and restrictions visible.</p></div></article>
+<article class="card"><div class="card-body"><div class="feature-number">02 <span>⇄</span></div><h3 data-en="Know what keeps coming." data-zh="弄清什么收入会持续。">Know what keeps coming.</h3><p data-en="A salary, variable business income and a large one-off receipt mean very different things for future cash flow." data-zh="稳定工资、浮动经营收入和一次性大额到账，对未来现金流的意义完全不同。">A salary, variable business income and a large one-off receipt mean very different things for future cash flow.</p></div></article>
+<article class="card"><div class="card-body"><div class="feature-number">03 <span>⌁</span></div><h3 data-en="Test what life could change." data-zh="把生活变化，提前试算。">Test what life could change.</h3><p data-en="Explore income shocks, a business sale and future obligations. See liquidity gaps before comparing investment allocations." data-zh="试算收入下降、出售企业和未来支出；先发现流动性缺口，再研究投资配置。">Explore income shocks, a business sale and future obligations. See liquidity gaps before comparing investment allocations.</p></div></article>
+</div></section>
+<section class="site-wrap try-section"><div class="try-banner"><div><span class="section-label" data-en="A SMALL EXPERIMENT" data-zh="做一个小实验">A SMALL EXPERIMENT</span><h2 data-en="Same lump sum. Different future." data-zh="同样一笔钱，不同的未来。">Same lump sum. Different future.</h2><p data-en="Receive a windfall — or sell your business and lose its income. Change the numbers and compare 24 months of cash." data-zh="意外获得一笔钱，或出售企业同时失去经营收入。修改数字，比较未来24个月的现金。">Receive a windfall — or sell your business and lose its income. Change the numbers and compare 24 months of cash.</p></div><a href="demo.html#playground" class="btn btn-primary" data-en="Try your numbers →" data-zh="试算你的数字 →">Try your numbers →</a></div></section>
+<section id="local" class="site-wrap local-section"><div class="local-copy"><span class="section-label" data-en="BROWSER TO YOUR OWN WORKSPACE" data-zh="从浏览器体验，到自己的工作区">BROWSER TO YOUR OWN WORKSPACE</span><h2 data-en="Start simple. Keep control." data-zh="简单开始，保留掌控。">Start simple. Keep control.</h2><p data-en="The website is a static demo, not a hosted AI service. The open-source kit adds local files, Python calculations and workflows for your own coding agent." data-zh="网站是静态演示，不是云端 AI 服务。开源项目包提供本地文件、Python计算和可供你自己的编程Agent执行的工作流。">The website is a static demo, not a hosted AI service. The open-source kit adds local files, Python calculations and workflows for your own coding agent.</p><div class="local-points"><p><strong data-en="In the browser" data-zh="浏览器内">In the browser</strong><span data-en="Explore the sample, try a cash budget, export your numbers. No financial inputs are uploaded by the demo." data-zh="浏览虚构案例、试算现金预算并导出数字。演示代码不会上传财务输入。">Explore the sample, try a cash budget, export your numbers. No financial inputs are uploaded by the demo.</span></p><p><strong data-en="On your machine" data-zh="在你的电脑上">On your machine</strong><span data-en="Keep private household files outside the repo. Use the agent workflows and optionally configure data providers." data-zh="私人家庭资料放在仓库外，使用Agent工作流，按需配置数据接口。">Keep private household files outside the repo. Use the agent workflows and optionally configure data providers.</span></p></div><p class="small-note" data-en="Using a cloud model can send selected context to its provider. Local-first does not mean every model runs offline." data-zh="使用云端模型可能向服务商发送所选资料。本地优先不代表所有模型都离线运行。">Using a cloud model can send selected context to its provider. Local-first does not mean every model runs offline.</p></div>
+<div class="local-terminal card"><div class="terminal-top"><span class="mono">open-family-office /</span><span class="badge badge-soft badge-xs">MIT</span></div><div class="terminal-body"><span class="terminal-comment" data-en="# After extracting the source kit" data-zh="# 解压项目包后"># After extracting the source kit</span><code>python scripts/hh.py demo</code><span class="terminal-comment" data-en="# Optional: install all tool groups" data-zh="# 可选：安装完整工具组"># Optional: install all tool groups</span><code>python scripts/bootstrap.py --all</code><div class="terminal-divider"></div><p data-en="Python 3.12 recommended. Full setup needs package access; some data providers require your own credentials. The sample CLI needs no API key." data-zh="建议Python 3.12。完整安装需要连接包仓库，部分数据源需要自己的凭据。运行示例CLI无需API Key。">Python 3.12 recommended. Full setup needs package access; some data providers require your own credentials. The sample CLI needs no API key.</p><div class="button-row"><a id="sourceLink" href="downloads/open-family-office-kit.zip" class="btn btn-primary" download="open-family-office-kit.zip" data-en="Download source kit ↓" data-zh="下载项目包 ↓">Download source kit ↓</a><a class="btn btn-outline" href="demo.html" download="open-family-office-demo.html" data-en="Offline demo ↓" data-zh="离线演示 ↓">Offline demo ↓</a></div></div></div>
+</section>
+<section class="site-wrap faq-section"><div class="section-label" data-en="A FEW THINGS TO KNOW" data-zh="使用前了解">A FEW THINGS TO KNOW</div><div class="faq-list">
+<details><summary data-en="Can people try this online and use it offline?" data-zh="可以线上体验，也可以离线使用吗？">Can people try this online and use it offline?</summary><p data-en="Yes. Publish the supplied public folder to static hosting for an online demo. Or download the HTML and open it locally. All scripts, styles and demo data are embedded. For links between the landing page and demo, keep the website ZIP’s files together." data-zh="可以。将public目录发布到静态托管即可线上体验，也可以下载HTML在本地打开。脚本、样式和演示数据均已内嵌。需要落地页与Demo互相跳转时，请保留网站ZIP的目录结构。">Yes. Publish the supplied public folder to static hosting for an online demo. Or download the HTML and open it locally. All scripts, styles and demo data are embedded. For links between the landing page and demo, keep the website ZIP’s files together.</p></details>
+<details><summary data-en="Does the website run an AI agent or connect my bank?" data-zh="网站会运行AI Agent或连接银行吗？">Does the website run an AI agent or connect my bank?</summary><p data-en="No. It offers precomputed research charts and an independent in-browser cash calculator. Agent workflows, private imports and provider requests run separately in your local setup. There is no login, background sync or trading on this site." data-zh="不会。网站提供预先计算的研究图表，以及独立的浏览器现金试算器。Agent工作流、私人数据导入和数据源请求在本地环境另行运行。此网站没有登录、后台同步或交易。">No. It offers precomputed research charts and an independent in-browser cash calculator. Agent workflows, private imports and provider requests run separately in your local setup. There is no login, background sync or trading on this site.</p></details>
+<details><summary data-en="Are the numbers real market data or recommendations?" data-zh="数字是实时行情或投资建议吗？">Are the numbers real market data or recommendations?</summary><p data-en="No. The public example is entirely synthetic. Scenario shocks and return assumptions are explicit inputs, not predictions. The calculator models cash only; it does not recommend investments or automatically value a business." data-zh="不是。公开案例完全虚构，情景冲击与收益假设是显式输入，不是预测。试算器仅计算现金，不推荐投资，也不会自动给企业估值。">No. The public example is entirely synthetic. Scenario shocks and return assumptions are explicit inputs, not predictions. The calculator models cash only; it does not recommend investments or automatically value a business.</p></details>
+</div></section>
+</main>
+<footer class="site-wrap"><div class="landing-footer"><a href="index.html" class="brand"><span class="brand-mark" aria-hidden="true">[O]</span><span>Open Family Office</span></a><span data-en="Open-source research tools. Your decisions remain yours." data-zh="开源研究工具。决策由你掌握。">Open-source research tools. Your decisions remain yours.</span><a href="demo.html" data-en="Try the demo ↗" data-zh="体验演示 ↗">Try the demo ↗</a></div><p class="footer-note" data-en="v0.3.0 · daisyUI-derived components + Tailwind CSS + Plotly · Synthetic demonstration · Not personal financial advice" data-zh="v0.3.0 · daisyUI组件改编 + Tailwind CSS + Plotly · 虚构案例演示 · 非个人财务建议">v0.3.0 · daisyUI-derived components + Tailwind CSS + Plotly · Synthetic demonstration · Not personal financial advice</p></footer>
+<script>'use strict';
+let language='en',dark=false;
+document.getElementById('landingLang').addEventListener('click',()=>{
+ language=language==='en'?'zh':'en';
+ document.documentElement.lang=language==='zh'?'zh-CN':'en';
+ document.querySelectorAll('[data-en][data-zh]').forEach(n=>n.textContent=language==='zh'?n.dataset.zh:n.dataset.en);
+ document.getElementById('landingLang').textContent=language==='zh'?'EN':'中文';
+});
+document.getElementById('landingTheme').addEventListener('click',()=>{dark=!dark;document.documentElement.dataset.theme=dark?'ofo-dark':'ofo';});
+</script>
+</body></html>
+
+<!-- THIRD PARTY NOTICES
+MIT License
+
+Copyright (c) 2020 Pouya Saadeghi
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+MIT License
+
+Copyright (c) 2016-2024 Plotly Technologies Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+The MIT License (MIT)
+
+Copyright (c) 2012-2025, Plotly, Inc.
+All rights reserved.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+MIT License
+
+Copyright (c) Tailwind Labs, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+-->

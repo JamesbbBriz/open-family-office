@@ -1,0 +1,320 @@
+{
+  "label": "Recession stress",
+  "snapshot": {
+    "name": "Demo Household",
+    "as_of": "2026-09-21",
+    "currency": "AUD",
+    "synthetic": true,
+    "gross_assets": "1922000.00",
+    "liabilities": "700000.00",
+    "net_worth": "1222000.00",
+    "spendable_cash": "120000.00",
+    "available_within_7_days_after_haircuts": "356600.00",
+    "eligible_allocation_capital": "374000.00",
+    "asset_classes": {
+      "bond": "100000.00",
+      "cash": "120000.00",
+      "equity": "280000.00",
+      "private_business": "390000.00",
+      "private_credit": "72000.00",
+      "real_estate": "960000.00"
+    },
+    "wrappers": {
+      "direct": "1796000.00",
+      "pension": "126000.00"
+    },
+    "warnings": [],
+    "notes": [
+      "Wrappers are a separate view of the SAME assets: never add them to asset classes.",
+      "Spendable cash excludes securities, locked pensions, pledged balances and future receipts.",
+      "7-day liquidation values use user assumptions, not guaranteed sale proceeds."
+    ]
+  },
+  "forecast": {
+    "scenario": "recession",
+    "scenario_label": "Stress: asset markdowns and 60% lower business income",
+    "currency": "AUD",
+    "months": 24,
+    "opening_cash": "120000.00",
+    "ending_cash": "22000.00",
+    "minimum_month_end_cash": "22000.00",
+    "first_shortfall": null,
+    "months_table": [
+      {
+        "month": "2026-10",
+        "opening_cash": "120000.00",
+        "stable_income": "8000.00",
+        "variable_income": "2000.00",
+        "one_off_receipts": "0.00",
+        "principal_return": "0.00",
+        "asset_sale_receipts": "0.00",
+        "outflows": "11000.00",
+        "closing_cash": "119000.00"
+      },
+      {
+        "month": "2026-11",
+        "opening_cash": "119000.00",
+        "stable_income": "8000.00",
+        "variable_income": "2000.00",
+        "one_off_receipts": "0.00",
+        "principal_return": "0.00",
+        "asset_sale_receipts": "0.00",
+        "outflows": "11000.00",
+        "closing_cash": "118000.00"
+      },
+      {
+        "month": "2026-12",
+        "opening_cash": "118000.00",
+        "stable_income": "8000.00",
+        "variable_income": "2000.00",
+        "one_off_receipts": "0.00",
+        "principal_return": "0.00",
+        "asset_sale_receipts": "0.00",
+        "outflows": "11000.00",
+        "closing_cash": "117000.00"
+      },
+      {
+        "month": "2027-01",
+        "opening_cash": "117000.00",
+        "stable_income": "8000.00",
+        "variable_income": "2000.00",
+        "one_off_receipts": "0.00",
+        "principal_return": "0.00",
+        "asset_sale_receipts": "0.00",
+        "outflows": "11000.00",
+        "closing_cash": "116000.00"
+      },
+      {
+        "month": "2027-02",
+        "opening_cash": "116000.00",
+        "stable_income": "8000.00",
+        "variable_income": "2000.00",
+        "one_off_receipts": "0.00",
+        "principal_return": "0.00",
+        "asset_sale_receipts": "0.00",
+        "outflows": "11000.00",
+        "closing_cash": "115000.00"
+      },
+      {
+        "month": "2027-03",
+        "opening_cash": "115000.00",
+        "stable_income": "8000.00",
+        "variable_income": "2000.00",
+        "one_off_receipts": "0.00",
+        "principal_return": "0.00",
+        "asset_sale_receipts": "0.00",
+        "outflows": "35000.00",
+        "closing_cash": "90000.00"
+      },
+      {
+        "month": "2027-04",
+        "opening_cash": "90000.00",
+        "stable_income": "8000.00",
+        "variable_income": "2000.00",
+        "one_off_receipts": "0.00",
+        "principal_return": "0.00",
+        "asset_sale_receipts": "0.00",
+        "outflows": "11000.00",
+        "closing_cash": "89000.00"
+      },
+      {
+        "month": "2027-05",
+        "opening_cash": "89000.00",
+        "stable_income": "8000.00",
+        "variable_income": "2000.00",
+        "one_off_receipts": "0.00",
+        "principal_return": "0.00",
+        "asset_sale_receipts": "0.00",
+        "outflows": "11000.00",
+        "closing_cash": "88000.00"
+      },
+      {
+        "month": "2027-06",
+        "opening_cash": "88000.00",
+        "stable_income": "8000.00",
+        "variable_income": "2000.00",
+        "one_off_receipts": "0.00",
+        "principal_return": "0.00",
+        "asset_sale_receipts": "0.00",
+        "outflows": "61000.00",
+        "closing_cash": "37000.00"
+      },
+      {
+        "month": "2027-07",
+        "opening_cash": "37000.00",
+        "stable_income": "8000.00",
+        "variable_income": "2000.00",
+        "one_off_receipts": "0.00",
+        "principal_return": "0.00",
+        "asset_sale_receipts": "0.00",
+        "outflows": "11000.00",
+        "closing_cash": "36000.00"
+      },
+      {
+        "month": "2027-08",
+        "opening_cash": "36000.00",
+        "stable_income": "8000.00",
+        "variable_income": "2000.00",
+        "one_off_receipts": "0.00",
+        "principal_return": "0.00",
+        "asset_sale_receipts": "0.00",
+        "outflows": "11000.00",
+        "closing_cash": "35000.00"
+      },
+      {
+        "month": "2027-09",
+        "opening_cash": "35000.00",
+        "stable_income": "8000.00",
+        "variable_income": "2000.00",
+        "one_off_receipts": "0.00",
+        "principal_return": "0.00",
+        "asset_sale_receipts": "0.00",
+        "outflows": "11000.00",
+        "closing_cash": "34000.00"
+      },
+      {
+        "month": "2027-10",
+        "opening_cash": "34000.00",
+        "stable_income": "8000.00",
+        "variable_income": "2000.00",
+        "one_off_receipts": "0.00",
+        "principal_return": "0.00",
+        "asset_sale_receipts": "0.00",
+        "outflows": "11000.00",
+        "closing_cash": "33000.00"
+      },
+      {
+        "month": "2027-11",
+        "opening_cash": "33000.00",
+        "stable_income": "8000.00",
+        "variable_income": "2000.00",
+        "one_off_receipts": "0.00",
+        "principal_return": "0.00",
+        "asset_sale_receipts": "0.00",
+        "outflows": "11000.00",
+        "closing_cash": "32000.00"
+      },
+      {
+        "month": "2027-12",
+        "opening_cash": "32000.00",
+        "stable_income": "8000.00",
+        "variable_income": "2000.00",
+        "one_off_receipts": "0.00",
+        "principal_return": "0.00",
+        "asset_sale_receipts": "0.00",
+        "outflows": "11000.00",
+        "closing_cash": "31000.00"
+      },
+      {
+        "month": "2028-01",
+        "opening_cash": "31000.00",
+        "stable_income": "8000.00",
+        "variable_income": "2000.00",
+        "one_off_receipts": "0.00",
+        "principal_return": "0.00",
+        "asset_sale_receipts": "0.00",
+        "outflows": "11000.00",
+        "closing_cash": "30000.00"
+      },
+      {
+        "month": "2028-02",
+        "opening_cash": "30000.00",
+        "stable_income": "8000.00",
+        "variable_income": "2000.00",
+        "one_off_receipts": "0.00",
+        "principal_return": "0.00",
+        "asset_sale_receipts": "0.00",
+        "outflows": "11000.00",
+        "closing_cash": "29000.00"
+      },
+      {
+        "month": "2028-03",
+        "opening_cash": "29000.00",
+        "stable_income": "8000.00",
+        "variable_income": "2000.00",
+        "one_off_receipts": "0.00",
+        "principal_return": "0.00",
+        "asset_sale_receipts": "0.00",
+        "outflows": "11000.00",
+        "closing_cash": "28000.00"
+      },
+      {
+        "month": "2028-04",
+        "opening_cash": "28000.00",
+        "stable_income": "8000.00",
+        "variable_income": "2000.00",
+        "one_off_receipts": "0.00",
+        "principal_return": "0.00",
+        "asset_sale_receipts": "0.00",
+        "outflows": "11000.00",
+        "closing_cash": "27000.00"
+      },
+      {
+        "month": "2028-05",
+        "opening_cash": "27000.00",
+        "stable_income": "8000.00",
+        "variable_income": "2000.00",
+        "one_off_receipts": "0.00",
+        "principal_return": "0.00",
+        "asset_sale_receipts": "0.00",
+        "outflows": "11000.00",
+        "closing_cash": "26000.00"
+      },
+      {
+        "month": "2028-06",
+        "opening_cash": "26000.00",
+        "stable_income": "8000.00",
+        "variable_income": "2000.00",
+        "one_off_receipts": "0.00",
+        "principal_return": "0.00",
+        "asset_sale_receipts": "0.00",
+        "outflows": "11000.00",
+        "closing_cash": "25000.00"
+      },
+      {
+        "month": "2028-07",
+        "opening_cash": "25000.00",
+        "stable_income": "8000.00",
+        "variable_income": "2000.00",
+        "one_off_receipts": "0.00",
+        "principal_return": "0.00",
+        "asset_sale_receipts": "0.00",
+        "outflows": "11000.00",
+        "closing_cash": "24000.00"
+      },
+      {
+        "month": "2028-08",
+        "opening_cash": "24000.00",
+        "stable_income": "8000.00",
+        "variable_income": "2000.00",
+        "one_off_receipts": "0.00",
+        "principal_return": "0.00",
+        "asset_sale_receipts": "0.00",
+        "outflows": "11000.00",
+        "closing_cash": "23000.00"
+      },
+      {
+        "month": "2028-09",
+        "opening_cash": "23000.00",
+        "stable_income": "8000.00",
+        "variable_income": "2000.00",
+        "one_off_receipts": "0.00",
+        "principal_return": "0.00",
+        "asset_sale_receipts": "0.00",
+        "outflows": "11000.00",
+        "closing_cash": "22000.00"
+      }
+    ],
+    "event_bridges": [],
+    "assumptions": [
+      "Monthly budget begins in the next calendar month; current partial month is excluded.",
+      "Negative cash is an UNFUNDED GAP, not an automatic overdraft or borrowing facility.",
+      "No return, interest, inflation, tax, FX evolution or automatic asset liquidation is assumed.",
+      "Debt-service outflows are entered once in cashflows; liabilities are snapshot principal, not deducted again.",
+      "Monthly timing can hide intra-month shortfalls. A budget is not a probability forecast.",
+      "Do not infer a future balance sheet from closing cash; debt amortisation and asset returns are not projected."
+    ]
+  },
+  "change": "-578000.00",
+  "explanation": "User-specified markdowns across assets, with business receipts 60% lower. Price losses change wealth; reduced receipts change cash. No probability is assigned."
+}

@@ -1,0 +1,16 @@
+{
+  "id": "recession",
+  "label": "Stress: asset markdowns and 60% lower business income",
+  "asset_shocks": {
+    "home": "-0.20",
+    "global-equities": "-0.30",
+    "pension": "-0.30",
+    "business": "-0.35",
+    "private-credit": "-0.10"
+  },
+  "cashflow_multipliers": {
+    "business-income": "0.40"
+  },
+  "sales": [],
+  "note": "User-specified joint stress; no estimated correlation or forecast probability."
+}

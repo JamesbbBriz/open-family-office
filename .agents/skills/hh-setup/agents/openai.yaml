@@ -1,0 +1,5 @@
+interface:
+  display_name: "Open Family Office: setup"
+  short_description: "Create a private household profile"
+policy:
+  allow_implicit_invocation: false

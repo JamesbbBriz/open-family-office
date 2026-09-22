@@ -1,0 +1,11 @@
+{
+  "id": "synthetic-policy",
+  "status": "user_confirmed",
+  "targets": {
+    "cash": "0.10",
+    "equity": "0.60",
+    "bond": "0.30"
+  },
+  "minimum_cash_reserve_base": "80000",
+  "note": "FICTIONAL TARGETS for software testing. Not recommended percentages and not a suitability assessment."
+}

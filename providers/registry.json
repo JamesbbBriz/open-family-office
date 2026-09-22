@@ -1,0 +1,228 @@
+{
+  "schema_version": "0.2",
+  "meaning": "implemented means adapter source exists, not that credentials, native SDKs or live service were validated",
+  "providers": [
+    {
+      "id": "manual-json",
+      "status": "implemented",
+      "capabilities": [
+        "household input"
+      ],
+      "validation": "unit-tested"
+    },
+    {
+      "id": "cashflow-csv",
+      "status": "implemented",
+      "capabilities": [
+        "cashflow import"
+      ],
+      "validation": "unit-tested"
+    },
+    {
+      "id": "sec-edgar",
+      "capabilities": [
+        "filings",
+        "companyfacts"
+      ],
+      "implementation": "adapter_written",
+      "validation": "contract_fixture_tests; live_connection_not_verified_in_delivery",
+      "required_environment": [
+        "SEC_USER_AGENT"
+      ],
+      "dependency": null,
+      "network_default": "off",
+      "redistribution": "not_assumed",
+      "note": "",
+      "status": "implemented"
+    },
+    {
+      "id": "fred",
+      "capabilities": [
+        "series"
+      ],
+      "implementation": "adapter_written",
+      "validation": "contract_fixture_tests; live_connection_not_verified_in_delivery",
+      "required_environment": [
+        "FRED_API_KEY"
+      ],
+      "dependency": null,
+      "network_default": "off",
+      "redistribution": "not_assumed",
+      "note": "",
+      "status": "implemented"
+    },
+    {
+      "id": "rba",
+      "capabilities": [
+        "table"
+      ],
+      "implementation": "adapter_written",
+      "validation": "contract_fixture_tests; live_connection_not_verified_in_delivery",
+      "required_environment": [],
+      "dependency": null,
+      "network_default": "off",
+      "redistribution": "not_assumed",
+      "note": "",
+      "status": "implemented"
+    },
+    {
+      "id": "abs",
+      "capabilities": [
+        "data",
+        "dataflows"
+      ],
+      "implementation": "adapter_written",
+      "validation": "contract_fixture_tests; live_connection_not_verified_in_delivery",
+      "required_environment": [],
+      "dependency": null,
+      "network_default": "off",
+      "redistribution": "not_assumed",
+      "note": "",
+      "status": "implemented"
+    },
+    {
+      "id": "oecd",
+      "capabilities": [
+        "data",
+        "dataflows"
+      ],
+      "implementation": "adapter_written",
+      "validation": "contract_fixture_tests; live_connection_not_verified_in_delivery",
+      "required_environment": [],
+      "dependency": null,
+      "network_default": "off",
+      "redistribution": "not_assumed",
+      "note": "",
+      "status": "implemented"
+    },
+    {
+      "id": "imf",
+      "capabilities": [
+        "data",
+        "dataflows"
+      ],
+      "implementation": "adapter_written",
+      "validation": "contract_fixture_tests; live_connection_not_verified_in_delivery",
+      "required_environment": [],
+      "dependency": null,
+      "network_default": "off",
+      "redistribution": "not_assumed",
+      "note": "IMF endpoint, dimensions and beta access must be confirmed against your portal",
+      "status": "implemented"
+    },
+    {
+      "id": "coingecko",
+      "capabilities": [
+        "quote",
+        "history"
+      ],
+      "implementation": "adapter_written",
+      "validation": "contract_fixture_tests; live_connection_not_verified_in_delivery",
+      "required_environment": [
+        "COINGECKO_API_KEY"
+      ],
+      "dependency": null,
+      "network_default": "off",
+      "redistribution": "not_assumed",
+      "note": "",
+      "status": "implemented"
+    },
+    {
+      "id": "yahoo",
+      "capabilities": [
+        "history"
+      ],
+      "implementation": "adapter_written",
+      "validation": "contract_fixture_tests; live_connection_not_verified_in_delivery",
+      "required_environment": [],
+      "dependency": "yfinance",
+      "network_default": "off",
+      "redistribution": "not_assumed",
+      "note": "",
+      "status": "implemented"
+    },
+    {
+      "id": "openbb",
+      "capabilities": [
+        "history",
+        "quote",
+        "search",
+        "macro"
+      ],
+      "implementation": "adapter_written",
+      "validation": "contract_fixture_tests; live_connection_not_verified_in_delivery",
+      "required_environment": [
+        "OPENBB_PYTHON"
+      ],
+      "dependency": null,
+      "network_default": "off",
+      "redistribution": "not_assumed",
+      "note": "",
+      "status": "implemented"
+    },
+    {
+      "id": "alpha-vantage",
+      "capabilities": [
+        "history"
+      ],
+      "implementation": "adapter_written",
+      "validation": "contract_fixture_tests; live_connection_not_verified_in_delivery",
+      "required_environment": [
+        "ALPHA_VANTAGE_API_KEY"
+      ],
+      "dependency": null,
+      "network_default": "off",
+      "redistribution": "not_assumed",
+      "note": "",
+      "status": "implemented"
+    },
+    {
+      "id": "finnhub",
+      "capabilities": [
+        "quote"
+      ],
+      "implementation": "adapter_written",
+      "validation": "contract_fixture_tests; live_connection_not_verified_in_delivery",
+      "required_environment": [
+        "FINNHUB_API_KEY"
+      ],
+      "dependency": null,
+      "network_default": "off",
+      "redistribution": "not_assumed",
+      "note": "",
+      "status": "implemented"
+    },
+    {
+      "id": "marketdata",
+      "capabilities": [
+        "quote"
+      ],
+      "implementation": "adapter_written",
+      "validation": "contract_fixture_tests; live_connection_not_verified_in_delivery",
+      "required_environment": [
+        "MARKETDATA_API_KEY"
+      ],
+      "dependency": null,
+      "network_default": "off",
+      "redistribution": "not_assumed",
+      "note": "",
+      "status": "implemented"
+    },
+    {
+      "id": "metalprice",
+      "capabilities": [
+        "quote"
+      ],
+      "implementation": "adapter_written",
+      "validation": "contract_fixture_tests; live_connection_not_verified_in_delivery",
+      "required_environment": [
+        "METALPRICE_API_KEY"
+      ],
+      "dependency": null,
+      "network_default": "off",
+      "redistribution": "not_assumed",
+      "note": "",
+      "status": "implemented"
+    }
+  ]
+}

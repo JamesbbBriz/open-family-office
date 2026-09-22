@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "open-family-office": {
+      "command": "/absolute/path/to/.venv/bin/python",
+      "args": [
+        "/absolute/path/to/open-family-office/scripts/hh.py",
+        "mcp"
+      ],
+      "env": {
+        "HH_WORKSPACE": "/absolute/path/to/private-family"
+      }
+    }
+  }
+}

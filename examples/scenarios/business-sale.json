@@ -1,0 +1,18 @@
+{
+  "id": "business-sale",
+  "label": "Business sale: one-off cash, recurring income stops",
+  "asset_shocks": {},
+  "cashflow_multipliers": {},
+  "sales": [
+    {
+      "asset_id": "business",
+      "month": 6,
+      "net_proceeds_base": "900000",
+      "stop_cashflow_ids": [
+        "business-income"
+      ],
+      "note": "Hypothetical after-tax proceeds for the household-owned equity; salary is independent and continues."
+    }
+  ],
+  "note": "Not a valuation or probability prediction. Sale replaces the business asset rather than adding cash on top of it."
+}

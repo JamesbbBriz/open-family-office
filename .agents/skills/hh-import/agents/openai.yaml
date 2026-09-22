@@ -1,0 +1,5 @@
+interface:
+  display_name: "Open Family Office: import"
+  short_description: "Import and reconcile records without inventing facts"
+policy:
+  allow_implicit_invocation: false

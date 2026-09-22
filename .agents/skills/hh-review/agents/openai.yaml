@@ -1,0 +1,5 @@
+interface:
+  display_name: "Open Family Office: review"
+  short_description: "Review decisions and update household memory"
+policy:
+  allow_implicit_invocation: false

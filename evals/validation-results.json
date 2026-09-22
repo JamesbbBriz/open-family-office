@@ -1,0 +1,41 @@
+{
+  "release": "0.2.0",
+  "date": "2026-09-21",
+  "python": "3.13.5",
+  "platform": "Linux",
+  "tests_discovered": 123,
+  "tests_passed": 119,
+  "tests_skipped": 4,
+  "test_failures": 0,
+  "skipped_native_groups": [
+    "skfolio",
+    "PyPortfolioOpt",
+    "ofxparse",
+    "MCP"
+  ],
+  "package_versions": {
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "scipy": "1.17.0",
+    "scikit-learn": "1.8.0",
+    "plotly": "6.5.2",
+    "pypdf": "5.9.0",
+    "skfolio": null,
+    "PyPortfolioOpt": null,
+    "mcp": null,
+    "ofxparse": null,
+    "yfinance": null,
+    "openbb": null
+  },
+  "chart_stack": {
+    "tailwindcss": "4.1.10",
+    "plotly_js": "3.3.1"
+  },
+  "actual_browser_checks": "browser-results.json",
+  "live_providers_verified": 0,
+  "provider_request_contracts": 13,
+  "full_installer": "dry-run only; package-registry network unavailable",
+  "host_end_to_end": "not executed",
+  "remote_ci": "not executed",
+  "data": "synthetic only"
+}

@@ -1,0 +1,10 @@
+{
+  "id": "income-stop",
+  "label": "Business distributions stop; no sale proceeds",
+  "asset_shocks": {},
+  "cashflow_multipliers": {
+    "business-income": "0"
+  },
+  "sales": [],
+  "note": "Cash-only stress; independent salary continues."
+}

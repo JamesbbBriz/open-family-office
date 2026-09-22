@@ -1,0 +1,2 @@
+# Isolated by scripts/bootstrap.py to avoid OpenBB/quant version conflicts.
+openbb>=4.4,<5

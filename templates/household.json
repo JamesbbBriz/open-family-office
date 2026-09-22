@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "id": "private-household",
+  "name": "REPLACE_LOCALLY",
+  "as_of": "REPLACE_WITH_SNAPSHOT_DATE",
+  "base_currency": "AUD",
+  "synthetic": false,
+  "entities": [
+    {
+      "id": "household",
+      "label": "Private household",
+      "type": "household"
+    }
+  ],
+  "assets": [],
+  "liabilities": [],
+  "cashflows": [],
+  "fx": {},
+  "evidence": [],
+  "risk_preferences": {
+    "willingness": "unknown",
+    "note": "Not yet elicited"
+  },
+  "notes": "Complete locally. Do not place this file in the code repository."
+}

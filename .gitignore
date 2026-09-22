@@ -1,0 +1,23 @@
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.DS_Store
+.env
+.env.*
+private/
+workspace/
+workspaces/
+statements/
+secrets/
+*.pem
+*.key
+*.p12
+*.pfx
+*.sqlite
+*.db
+# Private financial data belongs OUTSIDE this repository even if ignored.
+
+.venv-openbb/
+node_modules/
+*.log

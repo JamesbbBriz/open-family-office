@@ -1,0 +1,61 @@
+{
+  "base_currency": "AUD",
+  "root": "family",
+  "nodes": [
+    {
+      "id": "family",
+      "kind": "household"
+    },
+    {
+      "id": "holding",
+      "kind": "company"
+    },
+    {
+      "id": "trust",
+      "kind": "trust"
+    },
+    {
+      "id": "building",
+      "kind": "asset",
+      "value_base": "1200000"
+    },
+    {
+      "id": "fund",
+      "kind": "asset",
+      "value_base": "400000"
+    },
+    {
+      "id": "loan",
+      "kind": "liability",
+      "value_base": "600000"
+    }
+  ],
+  "edges": [
+    {
+      "owner": "family",
+      "owned": "holding",
+      "share": "1"
+    },
+    {
+      "owner": "holding",
+      "owned": "trust",
+      "share": "0.7"
+    },
+    {
+      "owner": "trust",
+      "owned": "building",
+      "share": "1"
+    },
+    {
+      "owner": "trust",
+      "owned": "loan",
+      "share": "1"
+    },
+    {
+      "owner": "holding",
+      "owned": "fund",
+      "share": "1"
+    }
+  ],
+  "synthetic": true
+}

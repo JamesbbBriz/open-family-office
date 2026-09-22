@@ -1,0 +1,49 @@
+{
+  "synthetic": true,
+  "positions": [
+    {
+      "id": "property",
+      "value_base": "1200000",
+      "exposures": {
+        "geography": {
+          "Australia": "1"
+        },
+        "sector": {
+          "Real estate": "1"
+        },
+        "currency": {
+          "AUD": "1"
+        }
+      }
+    },
+    {
+      "id": "business",
+      "value_base": "600000",
+      "exposures": {
+        "geography": {
+          "Australia": "1"
+        },
+        "sector": {
+          "Construction": "1"
+        },
+        "currency": {
+          "AUD": "1"
+        }
+      }
+    },
+    {
+      "id": "global-equity",
+      "value_base": "400000",
+      "exposures": {
+        "geography": {
+          "United States": "0.6",
+          "Europe": "0.2"
+        },
+        "currency": {
+          "USD": "0.6",
+          "EUR": "0.2"
+        }
+      }
+    }
+  ]
+}

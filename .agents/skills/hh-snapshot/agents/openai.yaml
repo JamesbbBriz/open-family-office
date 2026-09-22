@@ -1,0 +1,5 @@
+interface:
+  display_name: "Open Family Office: snapshot"
+  short_description: "Explain the full household balance sheet"
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,27 @@
+{
+  "currency": "AUD",
+  "policy_id": "synthetic-policy",
+  "reserve_excluded": "80000.00",
+  "residual_capital": "360000.00",
+  "comparison": [
+    {
+      "class": "bond",
+      "current_value": "100000.00",
+      "target_value": "108000.00",
+      "difference": "8000.00"
+    },
+    {
+      "class": "cash",
+      "current_value": "40000.00",
+      "target_value": "36000.00",
+      "difference": "-4000.00"
+    },
+    {
+      "class": "equity",
+      "current_value": "220000.00",
+      "target_value": "216000.00",
+      "difference": "-4000.00"
+    }
+  ],
+  "note": "User-specified target comparison, NOT optimisation, suitability, a trade list, or a recommendation. Locked assets/non-investable assets are excluded. Taxes, costs and tradability are not solved."
+}

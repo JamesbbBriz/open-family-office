@@ -1,0 +1,5 @@
+interface:
+  display_name: "Open Family Office: income"
+  short_description: "Classify income durability and one-off capital"
+policy:
+  allow_implicit_invocation: false

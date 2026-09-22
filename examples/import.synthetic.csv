@@ -1,0 +1,2 @@
+id,label,direction,amount,category,nature,recurrence,start_date,end_date,currency,evidence_id,amount_basis
+gift,"Hypothetical gift, not recurring income",in,10000,gift,one_off,one_off,2027-01-01,,AUD,demo-input,household_net_after_tax

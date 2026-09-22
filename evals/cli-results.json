@@ -1,0 +1,38 @@
+[
+  {
+    "command": "python scripts/hh.py demo",
+    "exit_code": 0
+  },
+  {
+    "command": "python scripts/hh.py optimize examples/returns.synthetic.json --method min_variance",
+    "exit_code": 0
+  },
+  {
+    "command": "python scripts/hh.py optimize examples/returns.synthetic.json --method risk_parity",
+    "exit_code": 0
+  },
+  {
+    "command": "python scripts/hh.py optimize examples/returns.synthetic.json --method cvar",
+    "exit_code": 0
+  },
+  {
+    "command": "python scripts/hh.py simulate examples/simulation.synthetic.json",
+    "exit_code": 0
+  },
+  {
+    "command": "python scripts/hh.py lookthrough examples/ownership.synthetic.json",
+    "exit_code": 0
+  },
+  {
+    "command": "python scripts/hh.py exposures examples/exposures.synthetic.json",
+    "exit_code": 0
+  },
+  {
+    "command": "python scripts/bootstrap.py --all --dry-run",
+    "exit_code": 0
+  },
+  {
+    "command": "fetch without --allow-network",
+    "refused": true
+  }
+]

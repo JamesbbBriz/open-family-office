@@ -1,0 +1,69 @@
+{
+  "browser": "144.0.7559.96",
+  "load_mode": "standalone file contents via set_content; file navigation blocked by environment policy",
+  "javascript_errors": [],
+  "external_http_requests": [],
+  "checks": {
+    "overview": {
+      "charts": 2,
+      "overflow": false
+    },
+    "cashflow": {
+      "charts": 4,
+      "overflow": false
+    },
+    "allocation": {
+      "charts": 4,
+      "overflow": false
+    },
+    "scenarios": {
+      "charts": 3,
+      "overflow": false
+    },
+    "sources": {
+      "charts": 0,
+      "overflow": false
+    },
+    "mobile": {
+      "overview": {
+        "horizontal_overflow": false
+      },
+      "cashflow": {
+        "horizontal_overflow": false
+      },
+      "allocation": {
+        "horizontal_overflow": false
+      },
+      "scenarios": {
+        "horizontal_overflow": false
+      },
+      "sources": {
+        "horizontal_overflow": false
+      }
+    }
+  },
+  "scenarios": {
+    "baseline": {
+      "ending_cash": 94000,
+      "reconciles": true
+    },
+    "recession": {
+      "ending_cash": 22000,
+      "reconciles": true
+    },
+    "business-sale": {
+      "ending_cash": 899000,
+      "reconciles": true
+    },
+    "income-stop": {
+      "ending_cash": -26000,
+      "reconciles": true
+    }
+  },
+  "chart_count": 13,
+  "json_export": true,
+  "print_handler": true,
+  "theme_switch": true,
+  "core_language_switch": true,
+  "source": "synthetic checked-in report"
+}

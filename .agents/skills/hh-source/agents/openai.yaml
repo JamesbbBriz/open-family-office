@@ -1,0 +1,5 @@
+interface:
+  display_name: "Open Family Office: source"
+  short_description: "Evaluate a financial-data adapter before implementing it"
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,5 @@
+interface:
+  display_name: "Open Family Office: what-if"
+  short_description: "Compare a changed household circumstance"
+policy:
+  allow_implicit_invocation: false
