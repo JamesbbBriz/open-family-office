@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.5.0
+- Made Open Family Office a standalone installable CLI: the wheel now bundles the synthetic demo, household templates, portable Skills/workflows and offline dashboard resources.
+- Added zero-clone trial and global-install paths with `uvx` / `uv tool install`, while keeping `pipx` and source checkouts as alternatives.
+- Added workspace discovery so normal commands can run as `ofo overview`, `ofo scenario ...` and `ofo dashboard ...` from a private Family Office directory.
+- `ofo init` now creates the private workspace structure and installs the portable agent kit automatically.
+- Added `ofo agent install|sync|status` with hash-based safe upgrades: locally edited Skills/workflows are preserved as conflicts rather than overwritten.
+- Added `ofo mcp-config` and clarified MCP as an optional, read-only interoperability layer rather than a prerequisite for the Skill/CLI experience.
+- Reworked the ten user-facing Skills into task contracts with explicit triggers, deterministic CLI actions, interpretation order, boundaries and next-step handoffs.
+- Converted Claude Skill files to thin pointers so the portable `.agents/skills/` definitions remain the single source of truth.
+- Added clean-wheel CI that installs the built package into a fresh environment and verifies demo, init, Skill sync, MCP config and private dashboard export outside the source checkout.
+- Kept advanced ownership, provider, quant and simulation capability behind progressive disclosure instead of removing it.
+
 ## 0.4.0
 - Standardized Python package under `src/open_family_office/` and CLI as `ofo`.
 - Added a progressive, user-facing 10-skill agent experience with Claude slash-command entrypoints.
