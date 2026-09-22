@@ -8,6 +8,17 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from open_family_office.core import snapshot,cashflow,stress,allocation,validate,active,fx_rate,number,month_start,iso
 from open_family_office.io import REPO_ROOT,read_json,write_new
 from open_family_office.integrations.registry import providers
+from open_family_office import __version__
+
+def _canonicalize(value):
+    """Normalize generated numeric JSON so builds are stable across BLAS/NumPy patch versions."""
+    if isinstance(value, float):
+        return round(value, 6)
+    if isinstance(value, list):
+        return [_canonicalize(v) for v in value]
+    if isinstance(value, dict):
+        return {k:_canonicalize(v) for k,v in value.items()}
+    return value
 
 def payload(h,scenarios=None,returns=None,simulation=None,policy=None):
     validate(h)
@@ -33,9 +44,9 @@ def payload(h,scenarios=None,returns=None,simulation=None,policy=None):
         sim=simulate(simulation)
     compare=allocation(h,policy) if policy else None
     regular=sum((number(f['amount'])*fx_rate(h,f['currency']) for f in h['cashflows'] if f['direction']=='out' and f['recurrence']=='monthly'),number('0'))
-    return {'version':'0.3.0','household':h,'cases':cases,'quant':quant,'simulation':sim,'allocation':compare,
+    return _canonicalize({'version':__version__,'household':h,'cases':cases,'quant':quant,'simulation':sim,'allocation':compare,
       'reserve':float(compare['reserve_excluded']) if compare else 0,'regular_monthly_outflows':float(regular),'providers':providers(),
-      'disclosure':'Source data and chart scripts are embedded. No external network calls are required by this HTML.'}
+      'disclosure':'Source data and chart scripts are embedded. No external network calls are required by this HTML.'})
 
 def render(data):
     from plotly.offline import get_plotlyjs
