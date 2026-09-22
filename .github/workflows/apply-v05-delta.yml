@@ -1,0 +1,31 @@
+name: Apply v0.5 CLI delta
+on:
+  push:
+    branches:
+      - feat/cli-onboarding-v05
+    paths:
+      - .github/ofo-v05-delta.b64
+      - .github/workflows/apply-v05-delta.yml
+permissions:
+  contents: write
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: feat/cli-onboarding-v05
+      - name: Verify and extract source delta
+        run: |
+          base64 -d .github/ofo-v05-delta.b64 > /tmp/ofo-v05-delta.tar.gz
+          echo "425ebbb101a1f510910404900ecb24f010aa1f794f019aeb0ae98c0bea50f0b8  /tmp/ofo-v05-delta.tar.gz" | sha256sum -c -
+          tar -xzf /tmp/ofo-v05-delta.tar.gz
+          rm .github/ofo-v05-delta.b64
+          rm .github/workflows/apply-v05-delta.yml
+      - name: Commit reconstructed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "feat: ship standalone CLI onboarding and installable agent skills"
+          git push origin HEAD:feat/cli-onboarding-v05
