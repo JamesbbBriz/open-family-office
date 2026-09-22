@@ -23,6 +23,46 @@ jobs:
       - run: python scripts/ofo.py demo
       - run: python scripts/release_check.py
 
+  wheel-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: "3.12"
+      - name: Build wheel
+        run: python -m pip wheel . --wheel-dir dist
+      - name: Install wheel in a clean environment
+        run: |
+          python -m venv /tmp/ofo-wheel
+          /tmp/ofo-wheel/bin/python -m pip install --upgrade pip
+          /tmp/ofo-wheel/bin/python -m pip install dist/open_family_office-*.whl
+      - name: Run outside the source checkout
+        working-directory: /tmp
+        run: |
+          /tmp/ofo-wheel/bin/ofo --version
+          /tmp/ofo-wheel/bin/ofo demo
+          rm -rf /tmp/ofo-private
+          /tmp/ofo-wheel/bin/ofo init /tmp/ofo-private
+          cd /tmp/ofo-private
+          /tmp/ofo-wheel/bin/ofo status
+          /tmp/ofo-wheel/bin/ofo agent sync
+          /tmp/ofo-wheel/bin/ofo mcp-config --format json > /tmp/mcp-config.json
+      - name: Verify bundled example and private dashboard
+        working-directory: /tmp
+        run: |
+          /tmp/ofo-wheel/bin/python - <<'PY'
+          from pathlib import Path
+          import shutil
+          from open_family_office.resources import resource_path
+          shutil.copy2(resource_path("examples/household.synthetic.json"), Path("/tmp/ofo-private/household.json"))
+          PY
+          cd /tmp/ofo-private
+          /tmp/ofo-wheel/bin/ofo overview --format markdown > /tmp/overview.md
+          /tmp/ofo-wheel/bin/ofo dashboard --out /tmp/ofo-private/reports/review.html
+          test -s /tmp/ofo-private/reports/review.html
+          test -s /tmp/ofo-private/.agents/skills/ofo-start/SKILL.md
+
   web:
     runs-on: ubuntu-latest
     steps:
