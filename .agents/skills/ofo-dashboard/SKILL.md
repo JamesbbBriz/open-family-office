@@ -1,25 +1,24 @@
 ---
 name: ofo-dashboard
-description: Generate a private offline dashboard from confirmed household files and optional research inputs.
+description: Generate a private offline visual review from confirmed household files and optional research inputs.
 license: MIT
-compatibility: File-aware agent. Python 3.11+ for deterministic calculations; optional integrations require separate setup.
+compatibility: Any file-aware agent with the installed ofo CLI.
 ---
 
 # ofo-dashboard
 
-## Use this when
-Generate a private offline dashboard from confirmed household files and optional research inputs.
+Use this when the user wants a reviewable visual artifact.
 
-## Outcome
-Export outside the repository, verify the page, and remind the user that the HTML embeds private financial data.
+## Run
+1. Read AGENTS.md and validate the household.
+2. Choose a new output path inside the private workspace, normally `reports/review-YYYYMMDD.html`.
+3. Run `ofo dashboard --out <path> --open`; add explicit scenario/research files only when they are part of the requested review.
+4. Confirm the file exists and is non-empty.
 
-## Canonical workflow
-- [`agent/workflows/dashboard.md`](../../../agent/workflows/dashboard.md)
+## Privacy
+The HTML embeds the household data it visualizes. Never put a private dashboard under the public repository or upload it without explicit user action.
 
-## Operating rules
-1. Read [`AGENTS.md`](../../../AGENTS.md) before using private data.
-2. Work only with files the user explicitly authorizes. Private workspaces live outside this repository.
-3. Run documented `ofo` / `python scripts/ofo.py` calculations before stating numerical results.
-4. Keep confirmed facts, imported evidence, assumptions and model outputs separate.
-5. Do not execute trades, move money, invent missing facts, or present research output as a guaranteed/suitable product recommendation.
-6. End with: what changed, what was calculated, what remains unknown, and the next user-controlled choice.
+## Finish with
+Tell the user what views are included and offer **ofo-review** if this dashboard represents a decision checkpoint.
+
+Canonical workflow: [agent/workflows/dashboard.md](../../../agent/workflows/dashboard.md)
