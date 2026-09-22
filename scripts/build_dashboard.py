@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 """Build a truly standalone Tailwind + Plotly report, with no network requests."""
 from pathlib import Path
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src'))
 import argparse, json, sys
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
-from household_cio.core import snapshot,cashflow,stress,allocation,validate,active,fx_rate,number,month_start,iso
-from household_cio.io import REPO_ROOT,read_json,write_new
-from household_cio.integrations.registry import providers
+from open_family_office.core import snapshot,cashflow,stress,allocation,validate,active,fx_rate,number,month_start,iso
+from open_family_office.io import REPO_ROOT,read_json,write_new
+from open_family_office.integrations.registry import providers
 
 def payload(h,scenarios=None,returns=None,simulation=None,policy=None):
     validate(h)
@@ -23,11 +25,11 @@ def payload(h,scenarios=None,returns=None,simulation=None,policy=None):
     quant=None
     if returns:
         import numpy as np
-        from household_cio.quant.allocation import optimize,frontier
+        from open_family_office.quant.allocation import optimize,frontier
         quant={'frontier':frontier(returns),'optimizers':{m:optimize(returns,'scipy',m) for m in ['min_variance','risk_parity','cvar']},'correlation':np.corrcoef(np.asarray(returns['returns']),rowvar=False).tolist(),'assets':returns['assets'],'synthetic':returns.get('synthetic',False)}
     sim=None
     if simulation:
-        from household_cio.quant.simulation import simulate
+        from open_family_office.quant.simulation import simulate
         sim=simulate(simulation)
     compare=allocation(h,policy) if policy else None
     regular=sum((number(f['amount'])*fx_rate(h,f['currency']) for f in h['cashflows'] if f['direction']=='out' and f['recurrence']=='monthly'),number('0'))
@@ -37,7 +39,7 @@ def payload(h,scenarios=None,returns=None,simulation=None,policy=None):
 
 def render(data):
     from plotly.offline import get_plotlyjs
-    root=REPO_ROOT/'site';template=(root/'dashboard.html').read_text()
+    root=REPO_ROOT/'web/src';template=(root/'dashboard.html').read_text()
     values={'__TAILWIND_CSS__':(root/'tailwind.generated.css').read_text(),'__APP_CSS__':(root/'dashboard.css').read_text(),
       '__SHARED_CSS__':(root/'shared.css').read_text(),'__SANDBOX_MATH__':(root/'sandbox.js').read_text(),
       '__DASHBOARD_DATA__':json.dumps(data,ensure_ascii=True,allow_nan=False).replace('<','\\u003c').replace('>','\\u003e').replace('&','\\u0026'),

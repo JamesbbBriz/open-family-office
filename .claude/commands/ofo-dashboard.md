@@ -1,0 +1,1 @@
+Use the `ofo-dashboard` project skill. Read `.claude/skills/ofo-dashboard/SKILL.md`, then follow its canonical workflow(s). Do not scan unrelated files or bypass the private-workspace rules in `AGENTS.md`.

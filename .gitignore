@@ -21,3 +21,8 @@ secrets/
 .venv-openbb/
 node_modules/
 *.log
+
+*.egg-info/
+build/
+dist/
+artifacts/

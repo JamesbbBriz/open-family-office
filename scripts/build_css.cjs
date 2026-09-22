@@ -10,4 +10,4 @@ const subset=fs.readFileSync(path.join(root,'vendor/daisyui/components.source.cs
 const css='@layer theme,base,daisyui,components,utilities;@layer theme{'+theme+'}'+
 '@theme inline{--color-base-100:var(--of-base);--color-base-200:var(--of-soft);--color-base-content:var(--of-ink);--radius-box:var(--of-box);--radius-selector:var(--of-selector);}' +
 '@layer base{'+preflight+'}'+subset+'@tailwind utilities;';
-const compiler=await tw.compile(css);const out=compiler.build(candidates);fs.writeFileSync(path.join(root,'site/tailwind.generated.css'),out);console.log('Compiled Tailwind '+JSON.parse(fs.readFileSync(pkg)).version+' + daisyUI source subset: '+out.length+' bytes');})();
+const compiler=await tw.compile(css);const out=compiler.build(candidates);fs.writeFileSync(path.join(root,'web/src/tailwind.generated.css'),out);console.log('Compiled Tailwind '+JSON.parse(fs.readFileSync(pkg)).version+' + daisyUI source subset: '+out.length+' bytes');})();

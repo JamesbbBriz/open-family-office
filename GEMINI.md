@@ -1,5 +1,3 @@
 # Open Family Office
 
-Read `AGENTS.md`, then the requested canonical workflow under `workflows/`.
-This file is an entrypoint, not a claim of tested automatic integration.
-Natural-language file-directed operation is the fallback. Do not infer native slash-command support.
+Read `AGENTS.md` and `docs/AGENT-UX.md`. Use the matching `.agents/skills/ofo-*/SKILL.md` entrypoint, then follow only the canonical workflows it references. Natural-language file-directed operation is the fallback when the host does not support native skills.

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "open-family-office"
-version = "0.3.0"
+version = "0.4.0"
 description = "Local-first household wealth research workflows, explicit data adapters and auditable quantitative tools"
 requires-python = ">=3.11"
 license = {file = "LICENSE"}
@@ -19,11 +19,12 @@ mcp = ["mcp>=1.10,<2"]
 all = ["numpy>=2.1,<3", "pandas>=2.2,<3", "scipy>=1.14,<2", "scikit-learn>=1.5,<2", "plotly==6.5.2", "skfolio>=0.9,<1", "PyPortfolioOpt>=1.5.6,<2", "yfinance>=0.2.60,<1", "pypdf>=5.9,<7", "ofxparse==0.21", "mcp>=1.10,<2"]
 
 [project.scripts]
-hh = "household_cio.cli:main"
+ofo = "open_family_office.cli:main"
 
 [tool.setuptools.packages.find]
-include = ["household_cio*"]
+where = ["src"]
+include = ["open_family_office*"]
 
 [tool.open-family-office]
-run = "python scripts/hh.py demo"
+run = "python scripts/ofo.py demo"
 notes = "Source checkout required for example/template/report assets. Editable installation supported; standalone wheel publication not claimed. OpenBB runs in an isolated environment."

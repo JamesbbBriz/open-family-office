@@ -2,12 +2,12 @@ from __future__ import annotations
 import io,json,os,sys,tempfile,unittest,types,importlib.util
 from pathlib import Path
 from unittest.mock import patch
-from household_cio.core import InputError
-from household_cio.integrations.providers import fetch,csv_records
-from household_cio.integrations.transport import Response,Transport,envelope
-from household_cio.integrations.registry import providers
-from household_cio.integrations.documents import holdings_csv
-from household_cio.integrations.mcp_server import confined
+from open_family_office.core import InputError
+from open_family_office.integrations.providers import fetch,csv_records
+from open_family_office.integrations.transport import Response,Transport,envelope
+from open_family_office.integrations.registry import providers
+from open_family_office.integrations.documents import holdings_csv
+from open_family_office.integrations.mcp_server import confined
 
 class FakeTransport:
     def __init__(self,body='{"ok":true}',content_type='application/json'):
@@ -137,14 +137,14 @@ class LocalImportTests(unittest.TestCase):
     @unittest.skipUnless(importlib.util.find_spec('pypdf'),'pypdf optional dependency absent')
     def test_empty_pdf_flags_missing_text(self):
         from pypdf import PdfWriter
-        from household_cio.integrations.documents import extract_pdf
+        from open_family_office.integrations.documents import extract_pdf
         with tempfile.TemporaryDirectory() as d:
             p=Path(d)/'blank.pdf';writer=PdfWriter();writer.add_blank_page(width=100,height=100)
             with p.open('wb') as f:writer.write(f)
             r=extract_pdf(p);self.assertEqual(r['pages'][0]['status'],'image_only_or_empty');self.assertIs(r['verified'],False)
     @unittest.skipUnless(importlib.util.find_spec('ofxparse'),'ofxparse not installed: native OFX execution not verified')
     def test_ofx_native_import(self):
-        from household_cio.integrations.documents import import_ofx
+        from open_family_office.integrations.documents import import_ofx
         from pathlib import Path
         r=import_ofx(Path(__file__).parents[1]/'examples/statement.synthetic.ofx')
         self.assertEqual(len(r['records']),1)

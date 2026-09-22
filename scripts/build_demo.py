@@ -4,10 +4,11 @@ from pathlib import Path
 import html
 import json
 import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src'))
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
-from household_cio.io import REPO_ROOT,read_json
-from household_cio.core import snapshot,cashflow,stress,allocation,InputError
-from household_cio.reports import markdown
+from open_family_office.io import REPO_ROOT,read_json
+from open_family_office.core import snapshot,cashflow,stress,allocation,InputError
+from open_family_office.reports import markdown
 
 
 def main():
@@ -29,10 +30,10 @@ def main():
         (expected/f'{name}.json').write_text(json.dumps(data,indent=2)+'\n')
         (expected/f'{name}.md').write_text(markdown(data['snapshot'])+'\n'+markdown(data['forecast']))
     (expected/'allocation.json').write_text(json.dumps(allocation(h,read_json(REPO_ROOT/'examples/policy.synthetic.json')),indent=2)+'\n')
-    template=(REPO_ROOT/'site/template.html').read_text()
+    template=(REPO_ROOT/'web/src/template.html').read_text()
     # Escape script closers: input is synthetic but do not build an injection-prone renderer.
     payload=json.dumps(cases,ensure_ascii=True).replace('<','\\u003c').replace('>','\\u003e').replace('&','\\u0026')
-    (REPO_ROOT/'site/legacy-demo.html').write_text(template.replace('__DEMO_DATA__',payload),encoding='utf-8')
-    print('Generated four synthetic cases, allocation output and site/legacy-demo.html (historical UI)')
+    (REPO_ROOT/'web/src/legacy-demo.html').write_text(template.replace('__DEMO_DATA__',payload),encoding='utf-8')
+    print('Generated four synthetic cases, allocation output and web/src/legacy-demo.html (historical UI)')
 
 if __name__=='__main__':main()

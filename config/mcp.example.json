@@ -3,11 +3,11 @@
     "open-family-office": {
       "command": "/absolute/path/to/.venv/bin/python",
       "args": [
-        "/absolute/path/to/open-family-office/scripts/hh.py",
+        "/absolute/path/to/open-family-office/scripts/ofo.py",
         "mcp"
       ],
       "env": {
-        "HH_WORKSPACE": "/absolute/path/to/private-family"
+        "OFO_WORKSPACE": "/absolute/path/to/private-family"
       }
     }
   }

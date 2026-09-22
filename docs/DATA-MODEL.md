@@ -1,7 +1,7 @@
 # Data model and supported semantics
 
-The machine contract is `schemas/household.schema.json`; the stricter arithmetic/business checks run with
-`python scripts/hh.py validate <file>`. Currency amounts are decimal strings, not binary floats.
+The machine contract is `agent/schemas/household.schema.json`; the stricter arithmetic/business checks run with
+`python scripts/ofo.py validate <file>`. Currency amounts are decimal strings, not binary floats.
 
 | Object | Meaning | Flat household-model boundary |
 |---|---|---|

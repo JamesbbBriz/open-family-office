@@ -1,0 +1,38 @@
+[
+  {
+    "command": "python scripts/ofo.py demo",
+    "exit_code": 0
+  },
+  {
+    "command": "python scripts/ofo.py optimize examples/returns.synthetic.json --method min_variance",
+    "exit_code": 0
+  },
+  {
+    "command": "python scripts/ofo.py optimize examples/returns.synthetic.json --method risk_parity",
+    "exit_code": 0
+  },
+  {
+    "command": "python scripts/ofo.py optimize examples/returns.synthetic.json --method cvar",
+    "exit_code": 0
+  },
+  {
+    "command": "python scripts/ofo.py simulate examples/simulation.synthetic.json",
+    "exit_code": 0
+  },
+  {
+    "command": "python scripts/ofo.py lookthrough examples/ownership.synthetic.json",
+    "exit_code": 0
+  },
+  {
+    "command": "python scripts/ofo.py exposures examples/exposures.synthetic.json",
+    "exit_code": 0
+  },
+  {
+    "command": "python scripts/bootstrap.py --all --dry-run",
+    "exit_code": 0
+  },
+  {
+    "command": "fetch without --allow-network",
+    "refused": true
+  }
+]

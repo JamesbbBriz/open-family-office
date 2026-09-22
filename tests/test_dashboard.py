@@ -2,10 +2,11 @@ from pathlib import Path
 import json,sys,tempfile,unittest
 from copy import deepcopy
 ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT/'src'))
 sys.path.insert(0,str(ROOT/'scripts'))
 from build_dashboard import payload,render,export_dashboard
-from household_cio.io import read_json
-from household_cio.core import InputError
+from open_family_office.io import read_json
+from open_family_office.core import InputError
 
 class DashboardTests(unittest.TestCase):
     def setUp(self):self.h=read_json(ROOT/'examples/household.synthetic.json')
@@ -27,7 +28,7 @@ class DashboardTests(unittest.TestCase):
     def test_private_output_inside_repo_rejected(self):
         self.assertRaises(InputError,export_dashboard,self.h,ROOT/'workspace-report.html')
     def test_currency_not_fixed_in_runtime_code(self):
-        script=(ROOT/'site/dashboard.js').read_text()
+        script=(ROOT/'web/src/dashboard.js').read_text()
         self.assertIn('const currency=DATA.household.base_currency',script)
         self.assertNotIn("const money=n=>'A$'",script)
     def test_disposal_data_reconciles(self):

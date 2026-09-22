@@ -5,9 +5,9 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 import json
 import unittest
-from household_cio.core import InputError, validate, snapshot, cashflow, stress, allocation, number
-from household_cio.io import read_json, write_new, REPO_ROOT
-from household_cio.cli import main
+from open_family_office.core import InputError, validate, snapshot, cashflow, stress, allocation, number
+from open_family_office.io import read_json, write_new, REPO_ROOT
+from open_family_office.cli import main
 
 class CoreTests(unittest.TestCase):
     def setUp(self):
