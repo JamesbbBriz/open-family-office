@@ -2,7 +2,7 @@
 from playwright.sync_api import sync_playwright
 from pathlib import Path
 import json,urllib.request,tempfile,os
-ROOT=Path(__file__).resolve().parents[1];ASSETS=ROOT/'assets';ASSETS.mkdir(exist_ok=True)
+ROOT=Path(__file__).resolve().parents[1];ASSETS=ROOT/'artifacts/browser';ASSETS.mkdir(parents=True,exist_ok=True)
 report={'engine':'Chromium via Playwright; inline document loading','checks':[],'errors':[],'external_requests':[],'limitations':['Managed Chromium blocks file:// and localhost navigation. Render/interaction tests load exact generated HTML bytes with page.set_content in an offline browser context, not a live deployed URL.','Safari and iOS file preview not tested.']}
 def ok(label,condition=True):
  if not condition:raise AssertionError(label)

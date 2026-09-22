@@ -18,15 +18,15 @@ def main():
     build_dashboard()
     data=json.loads((ROOT/'examples/dashboard-data.synthetic.json').read_text())
     if data['household'].get('synthetic') is not True:raise ValueError('Landing preview must be synthetic')
-    cfg=json.loads((ROOT/'config/site.json').read_text())
+    cfg=json.loads((ROOT/'web/config/site.json').read_text())
     # Only a vetted HTTPS GitHub URL may replace the locally generated download.
     repo=cfg.get('repository_url')
     if repo is not None and not re.fullmatch(r'https://github\.com/[\w.-]+/[\w.-]+/?',repo):raise ValueError('repository_url must be a GitHub repository HTTPS URL')
     source=repo or 'downloads/open-family-office-kit.zip'
-    values={'__TAILWIND_CSS__':(ROOT/'site/tailwind.generated.css').read_text(),
-      '__SHARED_CSS__':(ROOT/'site/shared.css').read_text(),'__LANDING_CSS__':(ROOT/'site/landing.css').read_text(),
-      '__LANDING_JS__':(ROOT/'site/landing.js').read_text(),'__PREVIEW_CHART__':preview_svg(data),'__SOURCE_HREF__':html.escape(source,quote=True)}
-    template=(ROOT/'site/landing.html').read_text()
+    values={'__TAILWIND_CSS__':(ROOT/'web/src/tailwind.generated.css').read_text(),
+      '__SHARED_CSS__':(ROOT/'web/src/shared.css').read_text(),'__LANDING_CSS__':(ROOT/'web/src/landing.css').read_text(),
+      '__LANDING_JS__':(ROOT/'web/src/landing.js').read_text(),'__PREVIEW_CHART__':preview_svg(data),'__SOURCE_HREF__':html.escape(source,quote=True)}
+    template=(ROOT/'web/src/landing.html').read_text()
     if repo:
         template=template.replace('download="open-family-office-kit.zip"','rel="noopener noreferrer"')
         template=template.replace('Download source kit ↓','View source on GitHub ↗').replace('下载项目包 ↓','在GitHub查看源码 ↗')

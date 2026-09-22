@@ -1,5 +1,0 @@
-interface:
-  display_name: "Open Family Office: policy"
-  short_description: "Draft an investment policy for user review"
-policy:
-  allow_implicit_invocation: false

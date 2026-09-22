@@ -1,9 +1,10 @@
 from pathlib import Path
 import json,re,sys,unittest
 ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT/'src'))
 sys.path.insert(0,str(ROOT/'scripts'))
 from build_dashboard import render,payload
-from household_cio.io import read_json
+from open_family_office.io import read_json
 
 class StaticWebTests(unittest.TestCase):
     def test_landing_and_demo_are_distinct(self):
@@ -22,10 +23,10 @@ class StaticWebTests(unittest.TestCase):
             self.assertIn("connect-src 'none'",s)
     def test_privacy_no_persist_or_fetch_in_app_source(self):
         for name in ['sandbox.js','landing.js','dashboard.js']:
-            s=(ROOT/'site'/name).read_text()
+            s=(ROOT/'web/src'/name).read_text()
             self.assertNotRegex(s,r'\b(?:fetch|XMLHttpRequest|WebSocket|localStorage|sessionStorage|indexedDB)\b')
     def test_six_views_and_fourteen_chart_nodes(self):
-        s=(ROOT/'site/dashboard.html').read_text()
+        s=(ROOT/'web/src/dashboard.html').read_text()
         self.assertEqual(len(re.findall(r'id="tab-[^" ]+"',s)),6)
         self.assertEqual(len(re.findall(r'id="[A-Za-z]+Chart"',s)),14)
     def test_new_upstream_notice_present(self):
@@ -37,7 +38,7 @@ class StaticWebTests(unittest.TestCase):
         self.assertIn('"name": "__SHARED_CSS__ \\u003c/script\\u003e"',s)
         self.assertIn('OFOCash',s)
     def test_no_fake_repo_is_configured(self):
-        config=json.loads((ROOT/'config/site.json').read_text())
+        config=json.loads((ROOT/'web/config/site.json').read_text())
         self.assertIsNone(config['repository_url'])
 
 if __name__=='__main__':unittest.main()

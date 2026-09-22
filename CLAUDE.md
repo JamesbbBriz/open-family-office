@@ -1,5 +1,3 @@
 # Open Family Office
 
-Read and follow `AGENTS.md`. It is the single operating contract.
-Project skills in `.claude/skills/` are thin entrypoints to canonical files in `workflows/`.
-Use `/hh-demo` first with the synthetic example. Never store a real profile in this file.
+Read `AGENTS.md` first. User-facing project skills live in `.claude/skills/` and slash-command entrypoints in `.claude/commands/`. Start new users with `/ofo-demo` or `/ofo-start`; do not expose the full internal workflow graph unless they ask.

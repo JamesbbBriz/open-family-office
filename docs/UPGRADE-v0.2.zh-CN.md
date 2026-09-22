@@ -44,6 +44,6 @@ Addepar、Wealthfolio、Ghostfolio 是设计参考，而不是需要一并安装
 
 ## 开始用自己的资料
 
-先用虚构案例通过 `python scripts/hh.py demo` 和 `python scripts/hh.py doctor`，再用 `AGENTS.md` 让你自己的 Agent 完成访谈。私人 JSON、PDF、OFX、密钥和生成报告全部放在仓库外。HTML 内含资料，切勿把私人报告当成公开 Demo 推送 GitHub。
+先用虚构案例通过 `python scripts/ofo.py demo` 和 `python scripts/ofo.py doctor`，再用 `AGENTS.md` 让你自己的 Agent 完成访谈。私人 JSON、PDF、OFX、密钥和生成报告全部放在仓库外。HTML 内含资料，切勿把私人报告当成公开 Demo 推送 GitHub。
 
 本次没有创建公开仓库、提交代码、发帖或运行真实交易。`launch/` 中仍有发布材料；README 已升级为实际截图和当前能力，外部发布前按 `RELEASE-CHECKLIST.md` 复核。

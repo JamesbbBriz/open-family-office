@@ -1,5 +1,0 @@
-interface:
-  display_name: "Open Family Office: demo"
-  short_description: "Run and explain the public synthetic demonstration"
-policy:
-  allow_implicit_invocation: false

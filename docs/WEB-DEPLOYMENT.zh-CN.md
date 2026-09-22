@@ -16,7 +16,7 @@ https://developers.cloudflare.com/pages/get-started/direct-upload/
 已有GitHub仓库也可在Pages设置中选择静态部署来源。由于目录为public，使用Actions部署时必须把artifact路径设为`public`；不要把仓库根目录作为网站目录。官方工作流说明：
 https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages
 
-落地页源码按钮默认下载同目录中的项目ZIP。确定真实GitHub地址后，在`config/site.json`中填写`repository_url`，格式为`https://github.com/OWNER/open-family-office`，再运行`python scripts/build_site.py`，按钮会变成真实仓库入口。不填写时不会显示虚构仓库地址。
+落地页源码按钮默认下载同目录中的项目ZIP。确定真实GitHub地址后，在`web/config/site.json`中填写`repository_url`，格式为`https://github.com/OWNER/open-family-office`，再运行`python scripts/build_site.py`，按钮会变成真实仓库入口。不填写时不会显示虚构仓库地址。
 
 ## 本地浏览
 
@@ -32,9 +32,9 @@ python -m http.server 8080 --bind 127.0.0.1 --directory public
 
 ## 本地真正使用Agent和私人数据
 
-网页Demo不等于Agent runtime。解压完整项目，先运行`python scripts/hh.py demo`验证工具，再让自己的文件型Agent读取AGENTS.md，按照hh-setup等Skills运行。完整工具安装入口是`python scripts/bootstrap.py --all`。可先加`--dry-run`查看将执行的操作。
+网页Demo不等于Agent runtime。解压完整项目，先运行`python scripts/ofo.py demo`验证工具，再让自己的文件型Agent读取AGENTS.md，按照ofo-start等Skills运行。完整工具安装入口是`python scripts/bootstrap.py --all`。可先加`--dry-run`查看将执行的操作。
 
-Python模块名household_cio、hh CLI、hh-* Skills保留兼容。没有把改名当作重写模块的理由。私人JSON、报表、银行单据放在仓库外；生成的私人HTML内嵌财务数据，不能上传到公开站点。
+Python模块统一为 `open_family_office`，CLI 使用 `ofo`，用户入口 Skills 使用 `ofo-*`。私人JSON、报表、银行单据放在仓库外；生成的私人HTML内嵌财务数据，不能上传到公开站点。
 
 试算器仅在内存中保存输入；关闭/刷新恢复默认。导出JSON由用户主动触发。没有自动上传、跟踪脚本或浏览器持久化。网站托管方仍可能保留常规访问日志；本地Agent使用云模型时也可能向其服务商发送选定资料。
 

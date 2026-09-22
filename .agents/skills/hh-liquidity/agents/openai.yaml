@@ -1,5 +1,0 @@
-interface:
-  display_name: "Open Family Office: liquidity"
-  short_description: "Model whether cash can meet dated obligations"
-policy:
-  allow_implicit_invocation: false

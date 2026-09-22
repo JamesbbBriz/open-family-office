@@ -1,5 +1,0 @@
-interface:
-  display_name: "Open Family Office: allocate"
-  short_description: "Compare an explicit target with accessible capital"
-policy:
-  allow_implicit_invocation: false

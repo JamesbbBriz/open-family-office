@@ -6,15 +6,15 @@ import re
 import sys
 import zipfile
 ROOT=Path(__file__).resolve().parents[1]
-DIRECTORIES={'.agents','.claude','.github','assets','docs','evals','examples','household_cio','launch','methodology','providers','schemas','scripts','site','templates','tests','workflows','config','requirements','vendor','public'}
-FILES={'README.md','README.zh-CN.md','AGENTS.md','CLAUDE.md','GEMINI.md','LICENSE','THIRD_PARTY.md','SECURITY.md','CONTRIBUTING.md','CODE_OF_CONDUCT.md','ROADMAP.md','CHANGELOG.md','RELEASE-CHECKLIST.md','pyproject.toml','.gitignore','.gitattributes','DELIVERY.md','MANIFEST.sha256','package.json','package-lock.json','THIRD_PARTY_NOTICES.txt'}
-IGNORE={'.git','__pycache__','.pytest_cache','.venv','.venv-openbb','node_modules','.DS_Store'}
+DIRECTORIES={'.agents','.claude','.github','agent','assets','config','docs','examples','src','scripts','web','tests','requirements','vendor','public'}
+FILES={'README.md','README.zh-CN.md','AGENTS.md','CLAUDE.md','GEMINI.md','LICENSE','THIRD_PARTY.md','SECURITY.md','CONTRIBUTING.md','CODE_OF_CONDUCT.md','ROADMAP.md','CHANGELOG.md','pyproject.toml','.gitignore','.gitattributes','package.json','package-lock.json','THIRD_PARTY_NOTICES.txt'}
+IGNORE={'.git','__pycache__','.pytest_cache','.venv','.venv-openbb','node_modules','.DS_Store','build','dist','.eggs'}
 
 def release_files(root:Path=ROOT)->list[Path]:
     result=[]
     for p in root.rglob('*'):
         rel=p.relative_to(root)
-        if any(part in IGNORE for part in rel.parts):continue
+        if any(part in IGNORE or part.endswith('.egg-info') for part in rel.parts):continue
         if p.is_symlink():raise ValueError(f'Symlinks are not allowed in release: {rel}')
         if not p.is_file():continue
         if p.suffix in {'.pyc','.pyo'}:continue
@@ -50,7 +50,7 @@ def check(root:Path=ROOT)->list[str]:
         if p.suffix=='.json':
             try:data=json.loads(text)
             except json.JSONDecodeError:errors.append(f'Invalid JSON: {rel}');continue
-            if isinstance(data,dict) and 'synthetic' in data and 'assets' in data and data.get('synthetic') is not True and rel.as_posix()!='templates/household.json':errors.append(f'Non-synthetic household in release: {rel}')
+            if isinstance(data,dict) and 'synthetic' in data and 'assets' in data and data.get('synthetic') is not True and rel.as_posix()!='agent/templates/household.json':errors.append(f'Non-synthetic household in release: {rel}')
         if p.suffix=='.md':
             for link in re.findall(r'\[[^\]]*\]\(([^)]+)\)',text):
                 target=link.split(' ')[0].split('#')[0]

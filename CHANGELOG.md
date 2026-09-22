@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.0
+- Standardized Python package under `src/open_family_office/` and CLI as `ofo`.
+- Added a progressive, user-facing 10-skill agent experience with Claude slash-command entrypoints.
+- Grouped canonical domain files under `agent/` and website source under `web/`.
+- Cleaned maintainer/launch material out of the repository root.
+- Fixed release-hygiene CI around editable-install `.egg-info` artifacts and added a web build job.
+
+
 ## v0.3.0 — 2026-09-21
 
 - Public brand changed to Open Family Office; internal Python module and hh-* skills stay compatible.

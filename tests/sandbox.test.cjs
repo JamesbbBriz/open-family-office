@@ -1,6 +1,6 @@
 'use strict';
 const assert=require('node:assert/strict');
-const {calculate,defaults,validate}=require('../site/sandbox.js');
+const {calculate,defaults,validate}=require('../web/src/sandbox.js');
 let passed=0;
 function test(name,fn){fn();passed++;console.log('PASS',name);}
 const run=overrides=>calculate({...defaults,...overrides});

@@ -14,7 +14,7 @@ def main():
     commands=[['<.venv python>','-m','pip','install','-e',f'.[{extra}]']]
     if a.all and not a.without_openbb:commands.append(['<.venv-openbb python>','-m','pip','install','-r','requirements/openbb.txt'])
     if not a.without_ui_build:commands.extend([['npm','install','--ignore-scripts'],['npm','run','build:css']])
-    commands.extend([['<.venv python>','scripts/build_site.py'],['<.venv python>','-m','unittest','discover','-s','tests','-v'],['<.venv python>','scripts/hh.py','doctor'],['<.venv python>','scripts/package_web.py']])
+    commands.extend([['<.venv python>','scripts/build_site.py'],['<.venv python>','-m','unittest','discover','-s','tests','-v'],['<.venv python>','scripts/ofo.py','doctor'],['<.venv python>','scripts/package_web.py']])
     if a.dry_run:
         for c in commands:print(' '.join(c))
         return

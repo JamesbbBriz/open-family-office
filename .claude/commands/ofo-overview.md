@@ -1,0 +1,1 @@
+Use the `ofo-overview` project skill. Read `.claude/skills/ofo-overview/SKILL.md`, then follow its canonical workflow(s). Do not scan unrelated files or bypass the private-workspace rules in `AGENTS.md`.

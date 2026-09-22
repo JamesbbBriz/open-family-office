@@ -1,12 +1,13 @@
-import copy,importlib.util,unittest
+import copy,importlib.util,unittest,sys
 import numpy as np
 from pathlib import Path
-from household_cio.io import read_json
-from household_cio.core import InputError
-from household_cio.quant.allocation import optimize,frontier,inputs
-from household_cio.quant.simulation import simulate
-from household_cio.quant.ownership import consolidate,exposures
+from open_family_office.io import read_json
+from open_family_office.core import InputError
+from open_family_office.quant.allocation import optimize,frontier,inputs
+from open_family_office.quant.simulation import simulate
+from open_family_office.quant.ownership import consolidate,exposures
 ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT/'src'))
 class QuantTests(unittest.TestCase):
     def setUp(self):self.spec=read_json(ROOT/'examples/returns.synthetic.json')
     def test_min_variance_feasible(self):

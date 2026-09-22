@@ -17,8 +17,8 @@ Optional native tests skip explicitly when their packages are absent. Mocked SDK
 ```bash
 python -m unittest discover -s tests -v
 python scripts/build_dashboard.py
-python scripts/hh.py demo
-python scripts/hh.py doctor
+python scripts/ofo.py demo
+python scripts/ofo.py doctor
 python scripts/release_check.py
 ```
 
