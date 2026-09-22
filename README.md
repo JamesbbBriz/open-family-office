@@ -18,7 +18,7 @@ If you have [uv](https://docs.astral.sh/uv/):
 uvx --from git+https://github.com/JamesbbBriz/open-family-office.git ofo demo --open
 ```
 
-No Git clone, model account, API key or private data is required. The demo is synthetic.
+No API key, model account or network call is needed for the synthetic demo. No Git clone or private household data is required.
 
 ## Install the CLI
 
