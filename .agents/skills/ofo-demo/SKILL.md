@@ -2,24 +2,25 @@
 name: ofo-demo
 description: Try Open Family Office safely with synthetic data before touching private files.
 license: MIT
-compatibility: File-aware agent. Python 3.11+ for deterministic calculations; optional integrations require separate setup.
+compatibility: Any file-aware agent with access to the installed ofo CLI or a source checkout.
 ---
 
 # ofo-demo
 
-## Use this when
-Try Open Family Office safely with synthetic data before touching private files.
+Use this for a first look or when the user asks what the project can do.
 
-## Outcome
-Run the bundled synthetic demo, explain the outputs, and show the next safe step.
+## Run
+1. Read AGENTS.md.
+2. Run `ofo demo` (source fallback: `python scripts/ofo.py demo`).
+3. If the user wants the visual experience, run `ofo demo --open`.
+4. Explain that every household number and market series in the demo is synthetic.
 
-## Canonical workflow
-- [`agent/workflows/demo.md`](../../../agent/workflows/demo.md)
+## Do not
+Do not ask for private data in this skill. Do not describe demo optimizer output as advice or a forecast.
 
-## Operating rules
-1. Read [`AGENTS.md`](../../../AGENTS.md) before using private data.
-2. Work only with files the user explicitly authorizes. Private workspaces live outside this repository.
-3. Run documented `ofo` / `python scripts/ofo.py` calculations before stating numerical results.
-4. Keep confirmed facts, imported evidence, assumptions and model outputs separate.
-5. Do not execute trades, move money, invent missing facts, or present research output as a guaranteed/suitable product recommendation.
-6. End with: what changed, what was calculated, what remains unknown, and the next user-controlled choice.
+## Finish with
+- what the demo actually calculated;
+- the difference between household accounting and liquid-sleeve research;
+- one next action: **ofo-start** if the user wants to use their own data.
+
+Canonical workflow: [agent/workflows/demo.md](../../../agent/workflows/demo.md)
