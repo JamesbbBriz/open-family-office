@@ -1,0 +1,16 @@
+# Open Family Office code owners
+#
+# The repository is currently maintained by JamesbbBriz.
+# Keep a default owner so external pull requests automatically request review.
+
+/* @JamesbbBriz
+
+# Governance / automation files are called out explicitly so ownership stays obvious.
+/.github/ @JamesbbBriz
+/AGENTS.md @JamesbbBriz
+/SECURITY.md @JamesbbBriz
+/CONTRIBUTING.md @JamesbbBriz
+
+# Financial engine and canonical Agent workflows.
+/src/open_family_office/ @JamesbbBriz
+/agent/ @JamesbbBriz
