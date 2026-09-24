@@ -1,0 +1,46 @@
+name: Refresh v0.5.1 generated web
+
+on:
+  push:
+    branches: ["release/v0.5.1"]
+    paths:
+      - ".github/workflows/refresh-v051-generated.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: release/v0.5.1
+
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: "3.12"
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install build dependencies
+        run: |
+          python -m pip install -e '.[analytics]'
+          npm ci --ignore-scripts --no-audit --no-fund
+
+      - name: Remove this one-time workflow before regenerating
+        run: rm .github/workflows/refresh-v051-generated.yml
+
+      - name: Rebuild committed static artifacts
+        run: npm run build
+
+      - name: Commit generated v0.5.1 artifacts
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public web/src/tailwind.generated.css .github/workflows/refresh-v051-generated.yml
+          git commit -m "chore: refresh generated web for v0.5.1"
+          git push origin HEAD:release/v0.5.1
