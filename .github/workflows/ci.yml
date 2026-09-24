@@ -72,6 +72,7 @@ jobs:
         working-directory: /tmp
         run: |
           /tmp/ofo-wheel/bin/ofo --version
+          /tmp/ofo-wheel/bin/open-family-office --version
           /tmp/ofo-wheel/bin/ofo demo
           rm -rf /tmp/ofo-private
           /tmp/ofo-wheel/bin/ofo init /tmp/ofo-private
