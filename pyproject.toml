@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "open-family-office"
-version = "0.5.0"
+version = "0.5.1"
 description = "Local-first family wealth research, agent skills and auditable quantitative tools"
 readme = "README.md"
 requires-python = ">=3.11"
