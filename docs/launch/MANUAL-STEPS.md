@@ -141,13 +141,15 @@ Workflow: publish.yml
 Environment: pypi
 ```
 
-Then run:
+Then publish the already-prepared Draft Release:
 
 ```text
-Actions → Publish PyPI + MCP Registry → Run workflow
+GitHub → Releases → Open Family Office v0.5.1 → Edit → Publish release
 ```
 
-That one workflow publishes the Python package first and then the MCP Registry metadata.
+The release event automatically runs `Publish PyPI + MCP Registry`: PyPI is published first, then the MCP Registry metadata.
+
+If the draft is not visible for any reason, `Actions → Publish PyPI + MCP Registry → Run workflow` remains the fallback.
 
 No PyPI token or MCP registry secret is required.
 
