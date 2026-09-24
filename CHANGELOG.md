@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.1
+- Added PyPI Trusted Publishing automation using GitHub OIDC and a second `open-family-office` CLI entrypoint while preserving `ofo`.
+- Added official MCP Registry `server.json`, package-ownership marker, registry validation in CI, and GitHub OIDC publication after PyPI succeeds.
+- Added a prepared GitHub Pages workflow for the synthetic public demo.
+- Added cross-file release-version consistency tests and built-wheel smoke coverage for both CLI entrypoints.
+- Added a complete GTM launch kit and one-time account/UI setup guide under `docs/launch/`.
+- No household accounting, trading, tax or financial-advice behaviour changed in this patch.
+
 ## 0.5.0
 - Made Open Family Office a standalone installable CLI: the wheel now bundles the synthetic demo, household templates, portable Skills/workflows and offline dashboard resources.
 - Added zero-clone trial and global-install paths with `uvx` / `uv tool install`, while keeping `pipx` and source checkouts as alternatives.
