@@ -46,7 +46,7 @@ jobs:
 
       - name: Run release metadata and privacy checks
         run: |
-          python -m unittest tests.test_release_metadata -v
+          python -m unittest discover -s tests -p 'test_release_metadata.py' -v
           python scripts/release_check.py
 
       - name: Build wheel and source distribution
@@ -66,7 +66,7 @@ jobs:
 
       - name: Validate server.json with pinned MCP Publisher
         run: |
-          curl -fsSLo /tmp/mcp-publisher.tar.gz             https://github.com/modelcontextprotocol/registry/releases/download/v1.8.1/mcp-publisher_linux_amd64.tar.gz
+          curl -fsSLo /tmp/mcp-publisher.tar.gz "https://github.com/modelcontextprotocol/registry/releases/download/v1.8.1/mcp-publisher_linux_amd64.tar.gz"
           echo "a06c9096dcb9727c13555b6be26c7effa707b01f06a4c561ba7a3635443cf2cc  /tmp/mcp-publisher.tar.gz" | sha256sum -c -
           tar -xzf /tmp/mcp-publisher.tar.gz -C /tmp mcp-publisher
           /tmp/mcp-publisher validate server.json
@@ -152,7 +152,7 @@ jobs:
 
       - name: Install pinned MCP Publisher
         run: |
-          curl -fsSLo /tmp/mcp-publisher.tar.gz             https://github.com/modelcontextprotocol/registry/releases/download/v1.8.1/mcp-publisher_linux_amd64.tar.gz
+          curl -fsSLo /tmp/mcp-publisher.tar.gz "https://github.com/modelcontextprotocol/registry/releases/download/v1.8.1/mcp-publisher_linux_amd64.tar.gz"
           echo "a06c9096dcb9727c13555b6be26c7effa707b01f06a4c561ba7a3635443cf2cc  /tmp/mcp-publisher.tar.gz" | sha256sum -c -
           tar -xzf /tmp/mcp-publisher.tar.gz -C /tmp mcp-publisher
           /tmp/mcp-publisher validate server.json
