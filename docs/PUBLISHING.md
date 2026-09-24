@@ -44,13 +44,15 @@ A pending publisher does not reserve the package name until the first successful
 
 ### First publish
 
-After the pending publisher exists, run the repository workflow:
+v0.5.1 is prepared as a **Draft GitHub Release**. After the pending PyPI Trusted Publisher exists:
 
 ```text
-Actions → Publish PyPI + MCP Registry → Run workflow
+GitHub → Releases → Open Family Office v0.5.1 → Edit → Publish release
 ```
 
-For future versions, publishing a GitHub Release automatically triggers the same workflow.
+Publishing the draft automatically triggers `Publish PyPI + MCP Registry`.
+
+The workflow-dispatch button remains available as an operator fallback, but the normal release path is to publish the prepared GitHub Release.
 
 ### Release invariant
 
