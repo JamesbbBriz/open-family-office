@@ -17,10 +17,13 @@ class ReleaseMetadataTests(unittest.TestCase):
         init_version = re.search(r'__version__\s*=\s*"([^"]+)"', package_init).group(1)
 
         package_json = json.loads((ROOT / "package.json").read_text(encoding="utf-8"))
+        package_lock = json.loads((ROOT / "package-lock.json").read_text(encoding="utf-8"))
         server = json.loads((ROOT / "server.json").read_text(encoding="utf-8"))
 
         self.assertEqual(version, init_version)
         self.assertEqual(version, package_json["version"])
+        self.assertEqual(version, package_lock["version"])
+        self.assertEqual(version, package_lock["packages"][""]["version"])
         self.assertEqual(version, server["version"])
         self.assertEqual(version, server["packages"][0]["version"])
 
