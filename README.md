@@ -4,6 +4,8 @@
 
 <h1 align="center">Open Family Office</h1>
 
+<!-- mcp-name: io.github.jamesbbbriz/open-family-office -->
+
 <p align="center"><em>Family-office methods, open to everyone willing to own the setup.</em></p>
 
 <p align="center">
