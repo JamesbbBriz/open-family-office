@@ -7,7 +7,7 @@ import sys
 import zipfile
 ROOT=Path(__file__).resolve().parents[1]
 DIRECTORIES={'.agents','.claude','.github','agent','assets','config','docs','examples','src','scripts','web','tests','requirements','vendor','public'}
-FILES={'README.md','README.zh-CN.md','AGENTS.md','CLAUDE.md','GEMINI.md','LICENSE','THIRD_PARTY.md','SECURITY.md','CONTRIBUTING.md','CODE_OF_CONDUCT.md','ROADMAP.md','CHANGELOG.md','pyproject.toml','.gitignore','.gitattributes','package.json','package-lock.json','THIRD_PARTY_NOTICES.txt','MANIFEST.in','setup.py'}
+FILES={'README.md','README.zh-CN.md','AGENTS.md','CLAUDE.md','GEMINI.md','LICENSE','THIRD_PARTY.md','SECURITY.md','CONTRIBUTING.md','CODE_OF_CONDUCT.md','ROADMAP.md','CHANGELOG.md','pyproject.toml','.gitignore','.gitattributes','package.json','package-lock.json','THIRD_PARTY_NOTICES.txt','MANIFEST.in','setup.py','server.json'}
 IGNORE={'.git','__pycache__','.pytest_cache','.venv','.venv-openbb','node_modules','.DS_Store','build','dist','.eggs'}
 
 def release_files(root:Path=ROOT)->list[Path]:

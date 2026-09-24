@@ -46,6 +46,14 @@ jobs:
         if: matrix.python-version == '3.12'
         run: python scripts/release_check.py
 
+      - name: Validate MCP Registry metadata
+        if: matrix.python-version == '3.12'
+        run: |
+          curl -fsSLo /tmp/mcp-publisher.tar.gz "https://github.com/modelcontextprotocol/registry/releases/download/v1.8.1/mcp-publisher_linux_amd64.tar.gz"
+          echo "a06c9096dcb9727c13555b6be26c7effa707b01f06a4c561ba7a3635443cf2cc  /tmp/mcp-publisher.tar.gz" | sha256sum -c -
+          tar -xzf /tmp/mcp-publisher.tar.gz -C /tmp mcp-publisher
+          /tmp/mcp-publisher validate server.json
+
   wheel-smoke:
     name: Wheel smoke
     runs-on: ubuntu-latest
@@ -72,6 +80,7 @@ jobs:
         working-directory: /tmp
         run: |
           /tmp/ofo-wheel/bin/ofo --version
+          /tmp/ofo-wheel/bin/open-family-office --version
           /tmp/ofo-wheel/bin/ofo demo
           rm -rf /tmp/ofo-private
           /tmp/ofo-wheel/bin/ofo init /tmp/ofo-private

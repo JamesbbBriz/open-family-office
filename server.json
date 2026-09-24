@@ -1,0 +1,46 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.jamesbbbriz/open-family-office",
+  "title": "Open Family Office",
+  "description": "Read-only household wealth tools for cash flow, scenarios, ownership and portfolio research.",
+  "repository": {
+    "url": "https://github.com/JamesbbBriz/open-family-office",
+    "source": "github"
+  },
+  "version": "0.5.0",
+  "packages": [
+    {
+      "registryType": "pypi",
+      "registryBaseUrl": "https://pypi.org",
+      "identifier": "open-family-office",
+      "version": "0.5.0",
+      "runtimeHint": "uvx",
+      "runtimeArguments": [
+        {
+          "type": "named",
+          "name": "--with",
+          "value": "mcp>=1.10,<2",
+          "description": "Install the optional MCP SDK into the ephemeral uvx environment."
+        }
+      ],
+      "packageArguments": [
+        {
+          "type": "positional",
+          "value": "mcp",
+          "description": "Start the read-only stdio MCP server."
+        }
+      ],
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "OFO_WORKSPACE",
+          "description": "Absolute path to the private Open Family Office workspace the MCP host is authorized to read.",
+          "isRequired": true,
+          "isSecret": false
+        }
+      ]
+    }
+  ]
+}
