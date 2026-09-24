@@ -52,12 +52,12 @@ Announcements
 ### Title
 
 ```text
-Open Family Office v0.5 — installable CLI, portable Agent Skills and private workspaces
+Open Family Office v0.5.1 — installable CLI, portable Agent Skills and trusted distribution
 ```
 
 ### Body
 
-v0.5 moves Open Family Office from a source-checkout-oriented project to an installable local toolkit.
+v0.5.1 packages the v0.5 experience and moves Open Family Office from a source-checkout-oriented project to an installable local toolkit.
 
 Highlights:
 
@@ -70,6 +70,6 @@ Highlights:
 - wheel smoke tests outside the source checkout.
 
 Release:
-https://github.com/JamesbbBriz/open-family-office/releases/tag/v0.5.0
+https://github.com/JamesbbBriz/open-family-office/releases/tag/v0.5.1
 
 Feedback and contributor PRs are welcome.
