@@ -10,7 +10,7 @@
 
 <p align="center">
   <a href="https://github.com/JamesbbBriz/open-family-office/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/JamesbbBriz/open-family-office/actions/workflows/ci.yml/badge.svg?branch=main"></a>
-  <img alt="Version" src="https://img.shields.io/badge/version-v0.5.0-2f824d">
+  <img alt="Version" src="https://img.shields.io/badge/version-v0.5.1-2f824d">
   <img alt="Python" src="https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13-3776AB?logo=python&logoColor=white">
   <a href="LICENSE"><img alt="MIT License" src="https://img.shields.io/badge/license-MIT-2f824d"></a>
   <img alt="Local-first" src="https://img.shields.io/badge/local--first-yes-3b7f5b">
